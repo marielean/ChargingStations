@@ -1,3 +1,5 @@
+Sia data una rete ad albero su cui si muovono k flussi, ciascuno dalla propria origine o k verso la propria destinazione d k . Supponendo di conoscere le lunghezze l ij degli archi (ij), che i veicoli partano tutti con carica completa e abbiano autonomia L, si posizionino il numero minimo di colonnine sui nodi della rete per permettere a tutti di raggiungere la propria destinazione, anche con + rifornimenti. Si supponga anche che ad ogni ricarica la batteria venga completamente ricaricata, qualunque sia il livello precedente.
+
 # ChargingStations
 LibreriaUtile: NetworkX per Python
 

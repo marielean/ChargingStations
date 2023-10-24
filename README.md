@@ -44,7 +44,7 @@ Un altro possibile algoritmo che tiene conto del fatto che non c'è bisogno di m
 1. Iniziamo con un insieme vuoto di stazioni di ricarica.
 2. Per ogni flusso da origine a destinazione, seguiamo il percorso dell'albero. Partiamo con una carica completa (cioè, l'autonomia è L).
 3. Mentre percorriamo il percorso, diminuiamo l'autonomia del veicolo della lunghezza dell'arco corrente.
-4. Se l'autonomia del veicolo sta per scendere a zero (o meno) con il prossimo arco, dobbiamo posizionare una stazione di ricarica. Invece di posizionare la stazione sul nodo più vicino lungo il percorso, consideriamo i nodi di intersezione con altri percorsi. Se esiste un nodo di intersezione entro l'autonomia del veicolo, posizioniamo la stazione di ricarica su quel nodo. Altrimenti, posizioniamo la stazione sul nodo corrente. Aggiungiamo questo nodo all'insieme delle stazioni di ricarica.
+4. Se l'autonomia del veicolo sta per scendere a zero (o quasi) con il prossimo arco, dobbiamo posizionare una stazione di ricarica. Invece di posizionare la stazione sul nodo più vicino lungo il percorso, consideriamo i nodi di intersezione con altri percorsi. Se esiste un nodo di intersezione entro l'autonomia del veicolo, posizioniamo la stazione di ricarica su quel nodo. Altrimenti, posizioniamo la stazione sul nodo corrente. Aggiungiamo questo nodo all'insieme delle stazioni di ricarica.
 5. Ripetiamo i passaggi 3-4 fino a quando tutti i veicoli hanno raggiunto le loro destinazioni.
 
 In questo algoritmo, non stiamo cercando di minimizzare il numero di nodi attraversati. Invece, stiamo cercando di massimizzare l'uso delle intersezioni tra i percorsi per ridurre il numero totale di stazioni di ricarica necessarie.

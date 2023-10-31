@@ -5,9 +5,12 @@ import random
 
 
 
-class Tree:
+class Tree_net:
+    """
+    Class to generate a random network tree with k flow
+    """
     def __init__(self) -> None:
-        Tree = nx.Graph()
+        pass
 
     def generate_random_network_tree(self, n_nodes: int, k_flow: int, edge_dim: int) -> nx.Graph:
         """

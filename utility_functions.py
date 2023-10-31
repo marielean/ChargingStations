@@ -17,6 +17,7 @@ def generate_random_network_tree(n_nodes: int, k_flow: int, edge_dim: int) -> nx
     Tree = nx.random_tree(n_nodes)
     for (u, v) in Tree.edges():
         Tree.edges[u,v]['weight'] = random.randint(1,10)
+        print(Tree.edges[u,v]['weight'])
 
     return Tree
 

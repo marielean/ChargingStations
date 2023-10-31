@@ -28,6 +28,7 @@ def get_weight_to_edges(Tree : nx.Graph):
     :return
         weight_to_edges: dictionary with the weight of the edges
     """
+    print("ciao")
     weight_to_edges = {}
     for (u, v) in Tree.edges():
         weight_to_edges[(u,v)] = Tree.edges[u,v]['weight']

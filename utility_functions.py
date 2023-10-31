@@ -14,10 +14,25 @@ def generate_random_network_tree(n_nodes: int, k_flow: int, edge_dim: int) -> nx
     :return
         Tree: random network tree with k flow
     """
-    Tree = nx.binomial_tree(n_nodes)
+    Tree = nx.random_tree(n_nodes)
     for (u, v) in Tree.edges():
-        Tree.edges[u, v]['weight'] = random.randint(1, 10)
+        Tree.edges[u,v]['weight'] = random.randint(1,10)
+
     return Tree
+
+def get_weight_to_edges(Tree : nx.Graph):
+    """
+    Function to get the weight of the edges of the tree
+    :param
+        Tree: Tree to be analyzed
+    :return
+        weight_to_edges: dictionary with the weight of the edges
+    """
+    weight_to_edges = {}
+    for (u, v) in Tree.edges():
+        weight_to_edges[(u,v)] = Tree.edges[u,v]['weight']
+    return weight_to_edges
+
 
 def draw_tree(Tree : nx.Graph):
     """

@@ -28,7 +28,7 @@ class Tree_net:
         self.Tree = Tree
         return Tree
     
-    def draw_tree(Tree : nx.Graph):
+    def draw_tree(Tree: nx.Graph):
         """
         Function to draw a tree using networkx
         :param 

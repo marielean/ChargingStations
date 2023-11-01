@@ -14,7 +14,9 @@ def generate_random_network_tree(n_nodes: int, k_flow: int, edge_dim: int) -> nx
     :return
         Tree: random network tree with k flow
     """
-    Tree = nx.random_tree(n_nodes)
+    Tree = nx.random_labeled_tree(n_nodes)
+    for node in Tree.nodes():
+        Tree.nodes[node]['pos'] = (random.randint(0, edge_dim), random.randint(0, edge_dim))
     for (u, v) in Tree.edges():
         Tree.edges[u,v]['weight'] = random.randint(1,10)
 
@@ -28,7 +30,6 @@ def get_weight_to_edges(Tree : nx.Graph):
     :return
         weight_to_edges: dictionary with the weight of the edges
     """
-    print("ciao")
     weight_to_edges = {}
     for (u, v) in Tree.edges():
         weight_to_edges[(u,v)] = Tree.edges[u,v]['weight']
@@ -43,11 +44,14 @@ def draw_tree(Tree : nx.Graph):
     """
     colors = {'colonnina':'green', 'no_colonnina':'grey', 'o_k':'red', 'd_k':'yellow'}
     #pos = nx.spring_layout(Tree)
-    nx.draw(Tree, with_labels=True)
+    nx.draw(
+            Tree, 
+            with_labels=True,
+            )
     plt.show()
 
 
-def get_distance(point1, point2):
+def get_distance(point1: (float, float), point2: (float, float)) -> float:
     """
     Function to get the distance between two points
     :param

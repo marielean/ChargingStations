@@ -14,15 +14,20 @@ def generate_random_network_tree(n_nodes: int, k_flow: int, edge_dim: int) -> nx
     :return
         Tree: random network tree with k flow
     """
-    Tree = nx.random_labeled_tree(n_nodes)
+    Tree = nx.random_tree(n_nodes)
+    Tree.graph['k_flow'] = k_flow
     for node in Tree.nodes():
+        # pos corrisponde alle coordinate cartesiane del nodo nella forma (x,y) dentro un quadrato di dimensione edge_dim per lato
         Tree.nodes[node]['pos'] = (random.randint(0, edge_dim), random.randint(0, edge_dim))
+        Tree.nodes[node]['colonnina'] = False
+        Tree.nodes[node]['colore'] = 'grey'
     for (u, v) in Tree.edges():
-        Tree.edges[u,v]['weight'] = random.randint(1,10)
-
+        x1, y1 = Tree.nodes[u]['pos']
+        x2, y2 = Tree.nodes[v]['pos']
+        Tree.edges[u,v]['weight'] = get_distance((x1, y1), (x2, y2))
     return Tree
 
-def get_weight_to_edges(Tree : nx.Graph):
+def get_weight_of_edges(Tree : nx.Graph):
     """
     Function to get the weight of the edges of the tree
     :param
@@ -42,11 +47,18 @@ def draw_tree(Tree : nx.Graph):
     :param 
         Tree: Tree to be drawn
     """
-    colors = {'colonnina':'green', 'no_colonnina':'grey', 'o_k':'red', 'd_k':'yellow'}
+    colori = {'colonnina':'green', 'no_colonnina':'grey', 'o_k':'red', 'd_k':'yellow'}
     #pos = nx.spring_layout(Tree)
+    for node in Tree.nodes():
+        if Tree.nodes[node]['colonnina']:
+            Tree.nodes[node]['colore'] = colori['colonnina']
+        else:
+            Tree.nodes[node]['colore'] = colori['no_colonnina']
     nx.draw(
             Tree, 
             with_labels=True,
+            node_color = [Tree.nodes[node]['colore'] for node in Tree.nodes()],
+            pos = nx.get_node_attributes(Tree, 'pos')
             )
     plt.show()
 

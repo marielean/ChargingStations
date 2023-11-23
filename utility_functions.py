@@ -18,7 +18,13 @@ def generate_random_network_tree(N: int, K: int, edge_dim: int) -> nx.Graph:
 
     # Generate random sources and destinations for each flow
     Tree.graph['K'] = K
-    flows = [[random.choice(list(Tree.nodes())), random.choice(list(Tree.nodes()))] for _ in range(K)]
+    flows = []
+    for _ in range(K):
+        nodes = list(Tree.nodes())
+        node1 = random.choice(nodes)
+        nodes.remove(node1)
+        node2 = random.choice(nodes)
+        flows.append([node1, node2])
 
     for node in Tree.nodes():
         # pos corrisponde alle coordinate cartesiane del nodo nella forma (x,y) dentro un quadrato di dimensione edge_dim per lato
@@ -77,3 +83,17 @@ def get_distance(point1: (float, float), point2: (float, float)) -> float:
         distance between the two points
     """
     return spatial.distance.euclidean(point1, point2)
+
+ def find_next_edge(tree, current_node, destination):
+    '''
+    Returns:
+        returns the edge that connects the current node to the destination node. For this i must do a recursive search for the next node of the edge
+    '''
+    if current_node == destination:
+        return None # I am in the destination node
+    else:
+        for node in list(tree.neighbors(current_node)):
+            if node != destination:
+                pass
+            else:
+                return find_next_edge(tree, node, destination)

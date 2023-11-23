@@ -15,7 +15,11 @@ def generate_random_network_tree(N: int, K: int, edge_dim: int) -> nx.Graph:
         Tree: random network tree with k flows
     """
     Tree = nx.random_tree(N)
+
+    # Generate random sources and destinations for each flow
     Tree.graph['K'] = K
+    flows = [[random.choice(list(Tree.nodes())), random.choice(list(Tree.nodes()))] for _ in range(K)]
+
     for node in Tree.nodes():
         # pos corrisponde alle coordinate cartesiane del nodo nella forma (x,y) dentro un quadrato di dimensione edge_dim per lato
         Tree.nodes[node]['pos'] = (random.randint(0, edge_dim), random.randint(0, edge_dim))
@@ -25,7 +29,7 @@ def generate_random_network_tree(N: int, K: int, edge_dim: int) -> nx.Graph:
         x1, y1 = Tree.nodes[u]['pos']
         x2, y2 = Tree.nodes[v]['pos']
         Tree.edges[u,v]['weight'] = get_distance((x1, y1), (x2, y2))
-    return Tree
+    return Tree, flows
 
 def get_weight_of_edges(Tree : nx.Graph):
     """

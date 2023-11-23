@@ -28,7 +28,17 @@ def generate_random_network_tree(N: int, K: int, edge_dim: int) -> nx.Graph:
         x1, y1 = Tree.nodes[u]['pos']
         x2, y2 = Tree.nodes[v]['pos']
         Tree.edges[u,v]['weight'] = get_distance((x1, y1), (x2, y2))
-    return Tree, flows
+    return Tree
+
+def get_random_flows(Tree: nx.Graph, K: int) -> list:
+    flows = []
+    for _ in range(K):
+        nodes = list(Tree.nodes())
+        node1 = random.choice(nodes)
+        nodes.remove(node1)
+        node2 = random.choice(nodes)
+        flows.append([node1, node2])
+    return flows
 
 def get_weight_of_edges(Tree : nx.Graph):
     """
@@ -76,16 +86,6 @@ def get_distance(point1: (float, float), point2: (float, float)) -> float:
         distance between the two points
     """
     return spatial.distance.euclidean(point1, point2)
-
-def get_random_flows(Tree: nx.Graph, K: int) -> list:
-    flows = []
-    for _ in range(K):
-        nodes = list(Tree.nodes())
-        node1 = random.choice(nodes)
-        nodes.remove(node1)
-        node2 = random.choice(nodes)
-        flows.append([node1, node2])
-    return flows
 
 def get_all_paths_of_all_flows(Tree: nx.Graph, flows: list) -> list:
     """

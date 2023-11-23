@@ -29,7 +29,7 @@ def generate_random_network_tree(N: int, K: int, edge_dim: int) -> nx.Graph:
 
 def get_weight_of_edges(Tree : nx.Graph):
     """
-    Function to get the weight of the edges of the tree
+    Function to get a dictionary of all the edges with their associated weight
     :param
         Tree: Tree to be analyzed
     :return

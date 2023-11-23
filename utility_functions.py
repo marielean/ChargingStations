@@ -18,13 +18,6 @@ def generate_random_network_tree(N: int, K: int, edge_dim: int) -> nx.Graph:
 
     # Generate random sources and destinations for each flow
     Tree.graph['K'] = K
-    flows = []
-    for _ in range(K):
-        nodes = list(Tree.nodes())
-        node1 = random.choice(nodes)
-        nodes.remove(node1)
-        node2 = random.choice(nodes)
-        flows.append([node1, node2])
 
     for node in Tree.nodes():
         # pos corrisponde alle coordinate cartesiane del nodo nella forma (x,y) dentro un quadrato di dimensione edge_dim per lato

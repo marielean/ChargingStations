@@ -84,16 +84,27 @@ def get_distance(point1: (float, float), point2: (float, float)) -> float:
     """
     return spatial.distance.euclidean(point1, point2)
 
- def find_next_edge(tree, current_node, destination):
-    '''
-    Returns:
-        returns the edge that connects the current node to the destination node. For this i must do a recursive search for the next node of the edge
-    '''
-    if current_node == destination:
-        return None # I am in the destination node
-    else:
-        for node in list(tree.neighbors(current_node)):
-            if node != destination:
-                pass
-            else:
-                return find_next_edge(tree, node, destination)
+def get_random_flows(Tree: nx.Graph, K: int) -> list:
+    flows = []
+    for _ in range(K):
+        nodes = list(Tree.nodes())
+        node1 = random.choice(nodes)
+        nodes.remove(node1)
+        node2 = random.choice(nodes)
+        flows.append([node1, node2])
+    return flows
+
+def get_all_paths_of_all_flows(Tree: nx.Graph, flows: list) -> list:
+    """
+    Function to get all the paths of all the flows
+    :param
+        Tree: Tree to be analyzed
+        flows: list of flows
+    :return
+        all_paths: list of all the paths of all the flows -> [[path1_flow1, path2_flow1, ...], [path1_flow2, path2_flow2, ...], ...]
+    """
+    paths = []
+    for flow in flows:
+        paths.append(nx.shortest_path(Tree, flow[0], flow[1]))
+    return paths
+

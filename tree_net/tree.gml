@@ -3,87 +3,87 @@ graph [
   node [
     id 0
     label "0"
-    pos 76
-    pos 31
+    pos 24
+    pos 39
     chrg_station 0
     color "grey"
   ]
   node [
     id 1
     label "1"
-    pos 121
-    pos 146
+    pos 31
+    pos 7
     chrg_station 0
     color "grey"
   ]
   node [
     id 2
     label "2"
-    pos 101
-    pos 100
+    pos 98
+    pos 18
     chrg_station 0
     color "grey"
   ]
   node [
     id 3
     label "3"
-    pos 103
-    pos 35
+    pos 94
+    pos 38
     chrg_station 0
     color "grey"
   ]
   node [
     id 4
     label "4"
-    pos 129
-    pos 40
+    pos 54
+    pos 79
     chrg_station 0
     color "grey"
   ]
   node [
     id 5
     label "5"
-    pos 28
-    pos 51
+    pos 80
+    pos 148
     chrg_station 0
     color "grey"
   ]
   node [
     id 6
     label "6"
-    pos 64
-    pos 8
+    pos 133
+    pos 56
     chrg_station 0
     color "grey"
   ]
   edge [
     source 0
-    target 6
-    weight 25.942243542145693
+    target 2
+    weight 76.92203845452875
   ]
   edge [
     source 1
-    target 2
-    weight 50.15974481593781
-  ]
-  edge [
-    source 2
     target 5
-    weight 87.92041856133307
+    weight 149.27156460625713
+  ]
+  edge [
+    source 1
+    target 4
+    weight 75.58438992278762
   ]
   edge [
     source 2
-    target 6
-    weight 99.16148445843275
+    target 4
+    weight 75.21303078589507
   ]
   edge [
     source 3
-    target 5
-    weight 76.68767828015137
+    target 4
+    weight 57.28001396647874
   ]
   edge [
     source 4
     target 6
-    weight 72.44998274671983
+    weight 82.28000972289685
   ]
 ]

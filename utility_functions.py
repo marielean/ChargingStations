@@ -4,23 +4,23 @@ from scipy import spatial
 import random
 
 
-def generate_random_network_tree(n_nodes: int, k_flow: int, edge_dim: int) -> nx.Graph:
+def generate_random_network_tree(N: int, K: int, edge_dim: int) -> nx.Graph:
     """
-    Function to generate a random network tree with k flow
+    Function to generate a random network tree with k flows
     :param 
-        n_nodes: number of nodes in the tree
-        k_flow: number of flow in the tree
-        edge_dim: dimension of the edge of the square
+        N: number of nodes in the tree network
+        K: number of flows in the tree network
+        edge_dim: dimension of the edge of the square where the network is located
     :return
-        Tree: random network tree with k flow
+        Tree: random network tree with k flows
     """
-    Tree = nx.random_tree(n_nodes)
-    Tree.graph['k_flow'] = k_flow
+    Tree = nx.random_tree(N)
+    Tree.graph['K'] = K
     for node in Tree.nodes():
         # pos corrisponde alle coordinate cartesiane del nodo nella forma (x,y) dentro un quadrato di dimensione edge_dim per lato
         Tree.nodes[node]['pos'] = (random.randint(0, edge_dim), random.randint(0, edge_dim))
-        Tree.nodes[node]['colonnina'] = False
-        Tree.nodes[node]['colore'] = 'grey'
+        Tree.nodes[node]['chrg_station'] = False
+        Tree.nodes[node]['color'] = 'grey'
     for (u, v) in Tree.edges():
         x1, y1 = Tree.nodes[u]['pos']
         x2, y2 = Tree.nodes[v]['pos']
@@ -33,12 +33,12 @@ def get_weight_of_edges(Tree : nx.Graph):
     :param
         Tree: Tree to be analyzed
     :return
-        weight_to_edges: dictionary with the weight of the edges
+        weight_of_edges: dictionary with the weight of the edges
     """
-    weight_to_edges = {}
+    weight_of_edges = {}
     for (u, v) in Tree.edges():
-        weight_to_edges[(u,v)] = Tree.edges[u,v]['weight']
-    return weight_to_edges
+        weight_of_edges[(u,v)] = Tree.edges[u,v]['weight']
+    return weight_of_edges
 
 
 def draw_tree(Tree : nx.Graph):
@@ -47,17 +47,17 @@ def draw_tree(Tree : nx.Graph):
     :param 
         Tree: Tree to be drawn
     """
-    colori = {'colonnina':'green', 'no_colonnina':'grey', 'o_k':'red', 'd_k':'yellow'}
+    colors = {'chrg_station':'green', 'no_chrg_station':'grey', 'o_k':'red', 'd_k':'yellow'}
     #pos = nx.spring_layout(Tree)
     for node in Tree.nodes():
-        if Tree.nodes[node]['colonnina']:
-            Tree.nodes[node]['colore'] = colori['colonnina']
+        if Tree.nodes[node]['chrg_station']:
+            Tree.nodes[node]['color'] = colors['chrg_station']
         else:
-            Tree.nodes[node]['colore'] = colori['no_colonnina']
+            Tree.nodes[node]['color'] = colors['no_chrg_station']
     nx.draw(
             Tree, 
-            with_labels=True,
-            node_color = [Tree.nodes[node]['colore'] for node in Tree.nodes()],
+            with_labels = True,
+            node_color = [Tree.nodes[node]['color'] for node in Tree.nodes()],
             pos = nx.get_node_attributes(Tree, 'pos')
             )
     plt.show()

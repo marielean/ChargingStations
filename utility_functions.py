@@ -40,6 +40,54 @@ def get_random_flows(Tree: nx.Graph, K: int) -> list:
         flows.append([node1, node2])
     return flows
 
+def get_random_chrg_stations(Tree: nx.Graph) -> list:
+    """
+    Function to get a list of random charging stations
+    :param
+        Tree: Tree to be analyzed
+    :return
+        chrg_stations: list of random charging stations
+    """
+    chrg_stations = []
+    for node in Tree.nodes():
+        if random.random() < 0.5:
+            chrg_stations.append(node)
+            Tree.nodes[node]['chrg_station'] = True
+    return chrg_stations
+
+def set_chrg_stations(Tree: nx.Graph, chrg_stations: list) -> None:
+    """
+    Function to set the charging stations
+    :param
+        Tree: Tree to be analyzed
+        chrg_stations: list of charging stations
+    """
+    for node in Tree.nodes():
+        if node in chrg_stations:
+            Tree.nodes[node]['chrg_station'] = True
+        
+
+def __is_admissible(Tree: nx.Graph, flows: list, L: int) -> bool:
+    """
+    Function to check if the network is admissible
+    :param
+        Tree: Tree to be analyzed
+        flows: list of flows
+        L: battery capacity per vehicle
+    :return
+        True if the network is admissible, False otherwise
+    """
+    paths = get_all_paths_of_all_flows(Tree, flows)
+    for path in paths:
+        charge = L
+        for i in range(len(path)-1):
+            charge -= Tree.edges[path[i], path[i+1]]['weight']
+            if Tree.nodes[path[i]]['chrg_station']:
+                charge = L
+            if charge < 0:
+                return False
+    return True
+
 def get_weight_of_edges(Tree : nx.Graph):
     """
     Function to get a dictionary of all the edges with their associated weight

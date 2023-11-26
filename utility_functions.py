@@ -67,9 +67,9 @@ def set_chrg_stations(Tree: nx.Graph, chrg_stations: list) -> None:
             Tree.nodes[node]['chrg_station'] = True
         
 
-def __is_admissible(Tree: nx.Graph, flows: list, L: int) -> bool:
+def is_admissible(Tree: nx.Graph, flows: list, L: int) -> bool:
     """
-    Function to check if the network is admissible
+    Function to check if the solution is admissible
     :param
         Tree: Tree to be analyzed
         flows: list of flows

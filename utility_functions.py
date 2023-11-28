@@ -83,7 +83,7 @@ def get_random_chrg_stations(Tree: nx.Graph) -> list:
 
 def is_admissible(Tree: nx.Graph, flows: list, L: int) -> bool:
     """
-    Function to check if the network is admissible
+    Function to check if the solution is admissible
     :param
         Tree: Tree to be analyzed
         flows: list of flows

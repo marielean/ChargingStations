@@ -65,7 +65,41 @@ def set_chrg_stations(Tree: nx.Graph, chrg_stations: list) -> None:
         if node in chrg_stations:
             Tree.nodes[node]['chrg_station'] = True
 
-def get_random_chrg_stations(Tree: nx.Graph) -> list:
+def is_admissible_paths(Tree: nx.Graph, paths: list, L: int) -> bool:
+    """
+    Function to check if the solution is admissible
+    :param
+        Tree: Tree to be analyzed
+        paths: list of paths of all flows
+        L: battery capacity per vehicle
+    :return
+        True if the network is admissible, False otherwise
+    """
+    for path in paths:
+        charge = L
+        for i in range(len(path)-1):
+            charge -= Tree.edges[path[i], path[i+1]]['weight']
+            if Tree.nodes[path[i]]['chrg_station']:
+                charge = L
+            if charge < 0:
+                return False
+    return True  
+
+def cont_chrg_stations(Tree: nx.Graph) -> int:
+    """
+    Function to count the number of charging stations in the graph
+    :param
+        Tree: Tree to be analyzed
+    :return
+        number of charging stations
+    """
+    count = 0
+    for node in Tree.nodes():
+        if Tree.nodes[node]['chrg_station']:
+            count += 1
+    return count
+
+def set_on_tree_random_chrg_stations(Tree: nx.Graph) -> list:
     """
     Function to get a list of random charging stations
     :param
@@ -79,7 +113,7 @@ def get_random_chrg_stations(Tree: nx.Graph) -> list:
             chrg_stations.append(node)
             Tree.nodes[node]['chrg_station'] = True
     return chrg_stations
-        
+  
 
 def is_admissible(Tree: nx.Graph, flows: list, L: int) -> bool:
     """

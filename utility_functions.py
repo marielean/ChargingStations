@@ -40,6 +40,31 @@ def get_random_flows(Tree: nx.Graph, K: int) -> list:
         flows.append([node1, node2])
     return flows
 
+def get_all_paths_of_all_flows(Tree: nx.Graph, flows: list) -> list:
+    """
+    Function to get all the paths of all the flows
+    :param
+        Tree: Tree to be analyzed
+        flows: list of flows
+    :return
+        paths: list of paths (a path for each flow) -> [[path_flow1], [path_flow2], ...]
+    """
+    paths = []
+    for flow in flows:
+        paths.append(nx.shortest_path(Tree, flow[0], flow[1]))
+    return paths
+
+def set_chrg_stations(Tree: nx.Graph, chrg_stations: list) -> None:
+    """
+    Function to set the charging stations in the graph
+    :param
+        Tree: Tree to be analyzed
+        chrg_stations: list of charging stations
+    """
+    for node in Tree.nodes():
+        if node in chrg_stations:
+            Tree.nodes[node]['chrg_station'] = True
+
 def get_random_chrg_stations(Tree: nx.Graph) -> list:
     """
     Function to get a list of random charging stations
@@ -54,20 +79,9 @@ def get_random_chrg_stations(Tree: nx.Graph) -> list:
             chrg_stations.append(node)
             Tree.nodes[node]['chrg_station'] = True
     return chrg_stations
-
-def set_chrg_stations(Tree: nx.Graph, chrg_stations: list) -> None:
-    """
-    Function to set the charging stations
-    :param
-        Tree: Tree to be analyzed
-        chrg_stations: list of charging stations
-    """
-    for node in Tree.nodes():
-        if node in chrg_stations:
-            Tree.nodes[node]['chrg_station'] = True
         
 
-def __is_admissible(Tree: nx.Graph, flows: list, L: int) -> bool:
+def is_admissible(Tree: nx.Graph, flows: list, L: int) -> bool:
     """
     Function to check if the network is admissible
     :param
@@ -87,19 +101,6 @@ def __is_admissible(Tree: nx.Graph, flows: list, L: int) -> bool:
             if charge < 0:
                 return False
     return True
-
-def get_weight_of_edges(Tree : nx.Graph):
-    """
-    Function to get a dictionary of all the edges with their associated weight
-    :param
-        Tree: Tree to be analyzed
-    :return
-        weight_of_edges: dictionary with the weight of the edges
-    """
-    weight_of_edges = {}
-    for (u, v) in Tree.edges():
-        weight_of_edges[(u,v)] = Tree.edges[u,v]['weight']
-    return weight_of_edges
 
 
 def draw_tree(Tree : nx.Graph):
@@ -135,17 +136,16 @@ def get_distance(point1: (float, float), point2: (float, float)) -> float:
     """
     return spatial.distance.euclidean(point1, point2)
 
-def get_all_paths_of_all_flows(Tree: nx.Graph, flows: list) -> list:
+def get_weight_of_edges(Tree : nx.Graph):
     """
-    Function to get all the paths of all the flows
+    Function to get a dictionary of all the edges with their associated weight
     :param
         Tree: Tree to be analyzed
-        flows: list of flows
     :return
-        all_paths: list of all the paths of all the flows -> [[path1_flow1, path2_flow1, ...], [path1_flow2, path2_flow2, ...], ...]
+        weight_of_edges: dictionary with the weight of the edges
     """
-    paths = []
-    for flow in flows:
-        paths.append(nx.shortest_path(Tree, flow[0], flow[1]))
-    return paths
+    weight_of_edges = {}
+    for (u, v) in Tree.edges():
+        weight_of_edges[(u,v)] = Tree.edges[u,v]['weight']
+    return weight_of_edges
 

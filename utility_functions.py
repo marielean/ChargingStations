@@ -54,6 +54,15 @@ def get_all_paths_of_all_flows(Tree: nx.Graph, flows: list) -> list:
         paths.append(nx.shortest_path(Tree, flow[0], flow[1]))
     return paths
 
+def reset_chrg_stations(Tree: nx.Graph) -> None:
+    '''
+    Function to reset chrging stations in the graph
+    :param
+        Tree: Tree to be reseted
+    '''
+    for node in Tree.nodes():
+        Tree.nodes[node]['chrg_station'] = False
+
 def set_chrg_stations(Tree: nx.Graph, chrg_stations: list) -> None:
     """
     Function to set the charging stations in the graph
@@ -61,6 +70,7 @@ def set_chrg_stations(Tree: nx.Graph, chrg_stations: list) -> None:
         Tree: Tree to be analyzed
         chrg_stations: list of charging stations
     """
+    
     for node in Tree.nodes():
         if node in chrg_stations:
             Tree.nodes[node]['chrg_station'] = True

@@ -35,9 +35,9 @@ def get_random_flows(Tree: nx.Graph, K: int) -> list:
     for _ in range(K):
         nodes = list(Tree.nodes())
         node1 = random.choice(nodes)
-        nodes.remove(node1)
+        nodes.remove(int(node1))
         node2 = random.choice(nodes)
-        flows.append([node1, node2])
+        flows.append([str(node1), str(node2)])
     return flows
 
 def get_all_paths_of_all_flows(Tree: nx.Graph, flows: list) -> list:

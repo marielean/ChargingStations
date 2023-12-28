@@ -2,6 +2,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from scipy import spatial
 import random
+import numpy as np
 
 
 def generate_random_network_tree(N: int, K: int, edge_dim: int) -> nx.Graph:
@@ -35,7 +36,7 @@ def get_random_flows(Tree: nx.Graph, K: int) -> list:
     for _ in range(K):
         nodes = list(Tree.nodes())
         node1 = random.choice(nodes)
-        nodes.remove(int(node1))
+        nodes.remove(node1)
         node2 = random.choice(nodes)
         flows.append([str(node1), str(node2)])
     return flows
@@ -193,3 +194,38 @@ def get_weight_of_edges(Tree : nx.Graph):
         weight_of_edges[(u,v)] = Tree.edges[u,v]['weight']
     return weight_of_edges
 
+
+
+def get_weights_matrix(T: nx.Graph, flows: list, paths: list) -> (np.ndarray, np.ndarray, np.ndarray):
+    '''
+    Function to get the weights matrix of the graph and the weights of the flows and the nodes.
+    Every row of the matrix is a flow, every column is a node. The value of the every cell is the number of how many times the flows are passed through the node.
+    :param
+        T: Tree to be analyzed
+        flows: list of flows
+        paths: list of paths of all flows
+    :return
+        weights: matrix of weights
+        flows_weights: array of weights of the flows
+        nodes_weights: array of weights of the nodes
+    '''
+
+    N = len(T.nodes)
+    K = len(flows)
+    weights = np.zeros((K, N), dtype=int)
+    for k in range(K):
+        for path in paths[k]:
+            for node in path:
+                weights[k][int(node)] += 1
+    # somma la riga prima riga della matrice dei pesi
+    
+    flows_weights = np.zeros(K, dtype=int)
+    for k in range(K):
+        flows_weights[k] = np.sum(weights[k])
+    
+    # somma la prima colonna della matrice dei pesi
+    nodes_weights = np.zeros(N, dtype=int)
+    for n in range(N):
+        nodes_weights[n] = np.sum(weights[:, n])
+    
+    return weights, flows_weights, nodes_weights

@@ -196,7 +196,7 @@ def get_weight_of_edges(Tree : nx.Graph):
 
 
 
-def get_weights_matrix(T: nx.Graph, flows: list, paths: list) -> (np.ndarray, np.ndarray, np.ndarray):
+def get_weights_matrix(T: nx.Graph, flows: list) -> (np.ndarray):
     '''
     Function to get the weights matrix of the graph and the weights of the flows and the nodes.
     Every row of the matrix is a flow, every column is a node. The value of the every cell is the number of how many times the flows are passed through the node.
@@ -212,20 +212,23 @@ def get_weights_matrix(T: nx.Graph, flows: list, paths: list) -> (np.ndarray, np
 
     N = len(T.nodes)
     K = len(flows)
+    paths = get_all_paths_of_all_flows(T, flows)
     weights = np.zeros((K, N), dtype=int)
     for k in range(K):
         for path in paths[k]:
             for node in path:
                 weights[k][int(node)] += 1
-    # somma la riga prima riga della matrice dei pesi
+    
     
     flows_weights = np.zeros(K, dtype=int)
     for k in range(K):
+        # somma la riga prima riga della matrice dei pesi
         flows_weights[k] = np.sum(weights[k])
     
-    # somma la prima colonna della matrice dei pesi
+    
     nodes_weights = np.zeros(N, dtype=int)
     for n in range(N):
+        # somma la prima colonna della matrice dei pesi
         nodes_weights[n] = np.sum(weights[:, n])
     
     return weights, flows_weights, nodes_weights

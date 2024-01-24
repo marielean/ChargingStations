@@ -7,7 +7,7 @@ import numpy as np
 
 def generate_random_network_tree(N: int, K: int, edge_dim: int) -> nx.Graph:
     """
-    Function to generate a random network tree with k flows
+    Generates a random network tree with K flows
     :param 
         N: number of nodes in the tree network
         K: number of flows in the tree network
@@ -40,6 +40,34 @@ def get_random_flows(Tree: nx.Graph, K: int) -> list:
         node2 = random.choice(nodes)
         flows.append([str(node1), str(node2)])
     return flows
+
+def draw_tree(Tree : nx.Graph, flows: list):
+    """
+    Draws the given tree using networkx. Inclued colors for charging stations, origins and destinations.
+    :param 
+        Tree: Tree to be drawn
+        flows: list of flows in the form [[source1, destination1], [source2, destination2], ...]
+    """
+
+    colors = {'chrg_station':'green', 'no_chrg_station':'grey', 'o_k':'red', 'd_k':'yellow'}
+    
+    for node in Tree.nodes():
+        if Tree.nodes[node]['chrg_station']:
+            Tree.nodes[node]['color'] = colors['chrg_station']
+        elif str(node) in [flow[0] for flow in flows]:
+            Tree.nodes[node]['color'] = colors['o_k']
+        elif str(node) in [flow[1] for flow in flows]:
+            Tree.nodes[node]['color'] = colors['d_k']
+        else:
+            Tree.nodes[node]['color'] = colors['no_chrg_station']
+
+    nx.draw_networkx(
+            Tree, 
+            with_labels = True,
+            node_color = [Tree.nodes[node]['color'] for node in Tree.nodes()],
+            pos = nx.spring_layout(Tree, seed=42)
+            )
+    plt.show()
 
 def get_all_paths_of_all_flows(Tree: nx.Graph, flows: list) -> list:
     """
@@ -146,28 +174,6 @@ def is_admissible(Tree: nx.Graph, flows: list, L: int) -> bool:
             if charge < 0:
                 return False
     return True
-
-
-def draw_tree(Tree : nx.Graph):
-    """
-    Function to draw a tree using networkx
-    :param 
-        Tree: Tree to be drawn
-    """
-    colors = {'chrg_station':'green', 'no_chrg_station':'grey', 'o_k':'red', 'd_k':'yellow'}
-    #pos = nx.spring_layout(Tree)
-    for node in Tree.nodes():
-        if Tree.nodes[node]['chrg_station']:
-            Tree.nodes[node]['color'] = colors['chrg_station']
-        else:
-            Tree.nodes[node]['color'] = colors['no_chrg_station']
-    nx.draw(
-            Tree, 
-            with_labels = True,
-            node_color = [Tree.nodes[node]['color'] for node in Tree.nodes()],
-            pos = nx.get_node_attributes(Tree, 'pos')
-            )
-    plt.show()
 
 
 def get_distance(point1: (float, float), point2: (float, float)) -> float:

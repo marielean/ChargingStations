@@ -43,23 +43,24 @@ def get_random_flows(Tree: nx.Graph, K: int) -> list:
 
 def draw_tree(Tree : nx.Graph, flows: list):
     """
-    Draws the given tree using networkx. Inclued colors for charging stations, origins and destinations.
+    Draws the given tree using networkx. Includes colors for charging stations, origins and destinations.
     :param 
         Tree: Tree to be drawn
         flows: list of flows in the form [[source1, destination1], [source2, destination2], ...]
     """
 
-    colors = {'chrg_station':'green', 'no_chrg_station':'grey', 'o_k':'red', 'd_k':'yellow'}
+    colors = {'chrg_station':'green', 'o_k':'red', 'd_k':'yellow', 'od_k': 'orange'}
     
     for node in Tree.nodes():
         if Tree.nodes[node]['chrg_station']:
             Tree.nodes[node]['color'] = colors['chrg_station']
         elif str(node) in [flow[0] for flow in flows]:
-            Tree.nodes[node]['color'] = colors['o_k']
+            if str(node) in [flow[1] for flow in flows]:
+                Tree.nodes[node]['color'] = colors['od_k']
+            else:
+                Tree.nodes[node]['color'] = colors['o_k']
         elif str(node) in [flow[1] for flow in flows]:
             Tree.nodes[node]['color'] = colors['d_k']
-        else:
-            Tree.nodes[node]['color'] = colors['no_chrg_station']
 
     nx.draw_networkx(
             Tree, 
@@ -71,7 +72,7 @@ def draw_tree(Tree : nx.Graph, flows: list):
 
 def get_all_paths_of_all_flows(Tree: nx.Graph, flows: list) -> list:
     """
-    Function to get all the paths of all the flows
+    Returns a list of paths, one for each flow from source to destination.
     :param
         Tree: Tree to be analyzed
         flows: list of flows
@@ -82,6 +83,37 @@ def get_all_paths_of_all_flows(Tree: nx.Graph, flows: list) -> list:
     for flow in flows:
         paths.append(nx.shortest_path(Tree, flow[0], flow[1]))
     return paths
+
+def get_weight_of_edges(Tree : nx.Graph):
+    """
+    Returns a dictionary with the weight of the edges
+    :param
+        Tree: Tree to be analyzed
+    :return
+        weight_of_edges: dictionary with the weight of the edges
+    """
+    weight_of_edges = {}
+    for (u, v) in Tree.edges():
+        weight_of_edges[(u,v)] = Tree.edges[u,v]['weight']
+    return weight_of_edges
+
+def cont_chrg_stations(Tree: nx.Graph) -> int:
+    """
+    Returns the number of charging stations in the graph
+    :param
+        Tree: Tree to be analyzed
+    :return
+        count: number of charging stations
+    """
+    count = 0
+    for node in Tree.nodes():
+        if Tree.nodes[node]['chrg_station']:
+            count += 1
+    return count
+
+
+
+
 
 def reset_chrg_stations(Tree: nx.Graph) -> None:
     '''
@@ -123,20 +155,6 @@ def is_admissible_paths(Tree: nx.Graph, paths: list, L: int) -> bool:
             if charge < 0:
                 return False
     return True  
-
-def cont_chrg_stations(Tree: nx.Graph) -> int:
-    """
-    Function to count the number of charging stations in the graph
-    :param
-        Tree: Tree to be analyzed
-    :return
-        number of charging stations
-    """
-    count = 0
-    for node in Tree.nodes():
-        if Tree.nodes[node]['chrg_station']:
-            count += 1
-    return count
 
 def set_on_tree_random_chrg_stations(Tree: nx.Graph) -> list:
     """
@@ -186,21 +204,6 @@ def get_distance(point1: (float, float), point2: (float, float)) -> float:
         distance between the two points
     """
     return spatial.distance.euclidean(point1, point2)
-
-def get_weight_of_edges(Tree : nx.Graph):
-    """
-    Function to get a dictionary of all the edges with their associated weight
-    :param
-        Tree: Tree to be analyzed
-    :return
-        weight_of_edges: dictionary with the weight of the edges
-    """
-    weight_of_edges = {}
-    for (u, v) in Tree.edges():
-        weight_of_edges[(u,v)] = Tree.edges[u,v]['weight']
-    return weight_of_edges
-
-
 
 def get_weights_matrix(T: nx.Graph, flows: list) -> (np.ndarray):
     '''

@@ -1,16 +1,17 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 from scipy import spatial
-import random
+import random, json
 import numpy as np
 
 
-def generate_random_network_tree(N: int, K: int, edge_dim: int) -> nx.Graph:
+def generate_random_network_tree(N: int, K: int, L: int, edge_dim: int) -> nx.Graph:
     """
     Generates a random network tree with K flows
     :param 
         N: number of nodes in the tree network
         K: number of flows in the tree network
+        L: battery capacity per vehicle
         edge_dim: dimension of the edge of the square where the network is located
     :return
         Tree: random network tree with k flows
@@ -18,7 +19,10 @@ def generate_random_network_tree(N: int, K: int, edge_dim: int) -> nx.Graph:
     Tree = nx.random_tree(N)
 
     # Generate random sources and destinations for each flow
+    Tree.graph['N'] = N
     Tree.graph['K'] = K
+    Tree.graph['L'] = L
+    Tree.graph['edge_dim'] = edge_dim
 
     for node in Tree.nodes():
         # pos corrisponde alle coordinate cartesiane del nodo nella forma (x,y) dentro un quadrato di dimensione edge_dim per lato
@@ -40,6 +44,35 @@ def get_random_flows(Tree: nx.Graph, K: int) -> list:
         node2 = random.choice(nodes)
         flows.append([str(node1), str(node2)])
     return flows
+
+def save_tree(Tree: nx.Graph, flows: list, filename: str) -> None:
+    """
+    Saves the tree in a file
+    :param
+        Tree: Tree to be saved
+        filename: name of the file
+    """
+    nx.write_gml(Tree, filename)
+    # Open a file in write mode
+    with open('tree_net/flows.json', 'w') as file:
+        json.dump(flows, file)
+
+def load_all_data(filename: str) -> (nx.Graph, list):
+    """
+    Loads the tree from a file
+    :param
+        filename: name of the file
+    :return
+        Tree: Tree loaded from the file
+        flows: list of flows
+        L: battery capacity per vehicle
+        K: number of flows
+        N: number of nodes
+    """
+    Tree = nx.read_gml(filename)
+    with open('tree_net/flows.json', 'r') as file:
+        flows = json.load(file)
+    return Tree, flows, Tree.graph['L'], Tree.graph['K'], Tree.graph['N']
 
 def draw_tree(Tree : nx.Graph, flows: list):
     """

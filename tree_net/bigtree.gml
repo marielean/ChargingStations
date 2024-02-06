@@ -6,386 +6,386 @@ graph [
   node [
     id 0
     label "0"
-    pos 90
-    pos 79
+    pos 61
+    pos 51
     chrg_station 0
     color "grey"
   ]
   node [
     id 1
     label "1"
-    pos 117
-    pos 103
+    pos 183
+    pos 71
     chrg_station 0
     color "grey"
   ]
   node [
     id 2
     label "2"
-    pos 99
-    pos 154
+    pos 186
+    pos 51
     chrg_station 0
     color "grey"
   ]
   node [
     id 3
     label "3"
-    pos 115
-    pos 58
+    pos 181
+    pos 52
     chrg_station 0
     color "grey"
   ]
   node [
     id 4
     label "4"
-    pos 49
-    pos 84
+    pos 160
+    pos 115
     chrg_station 0
     color "grey"
   ]
   node [
     id 5
     label "5"
-    pos 49
-    pos 15
+    pos 107
+    pos 198
     chrg_station 0
     color "grey"
   ]
   node [
     id 6
     label "6"
-    pos 78
-    pos 14
+    pos 90
+    pos 35
     chrg_station 0
     color "grey"
   ]
   node [
     id 7
     label "7"
-    pos 71
-    pos 125
+    pos 77
+    pos 188
     chrg_station 0
     color "grey"
   ]
   node [
     id 8
     label "8"
-    pos 187
-    pos 200
+    pos 84
+    pos 71
     chrg_station 0
     color "grey"
   ]
   node [
     id 9
     label "9"
-    pos 185
-    pos 2
+    pos 113
+    pos 95
     chrg_station 0
     color "grey"
   ]
   node [
     id 10
     label "10"
-    pos 127
-    pos 10
+    pos 136
+    pos 19
     chrg_station 0
     color "grey"
   ]
   node [
     id 11
     label "11"
-    pos 38
-    pos 132
+    pos 43
+    pos 47
     chrg_station 0
     color "grey"
   ]
   node [
     id 12
     label "12"
-    pos 60
-    pos 191
+    pos 68
+    pos 152
     chrg_station 0
     color "grey"
   ]
   node [
     id 13
     label "13"
-    pos 108
-    pos 71
+    pos 190
+    pos 89
     chrg_station 0
     color "grey"
   ]
   node [
     id 14
     label "14"
-    pos 57
-    pos 128
+    pos 119
+    pos 107
     chrg_station 0
     color "grey"
   ]
   node [
     id 15
     label "15"
-    pos 196
-    pos 132
+    pos 10
+    pos 16
     chrg_station 0
     color "grey"
   ]
   node [
     id 16
     label "16"
-    pos 81
-    pos 27
+    pos 110
+    pos 97
     chrg_station 0
     color "grey"
   ]
   node [
     id 17
     label "17"
-    pos 159
-    pos 42
+    pos 85
+    pos 58
     chrg_station 0
     color "grey"
   ]
   node [
     id 18
     label "18"
-    pos 175
-    pos 31
+    pos 93
+    pos 129
     chrg_station 0
     color "grey"
   ]
   node [
     id 19
     label "19"
-    pos 40
-    pos 179
+    pos 185
+    pos 150
     chrg_station 0
     color "grey"
   ]
   node [
     id 20
     label "20"
-    pos 90
-    pos 101
+    pos 130
+    pos 42
     chrg_station 0
     color "grey"
   ]
   node [
     id 21
     label "21"
-    pos 111
-    pos 32
+    pos 96
+    pos 107
     chrg_station 0
     color "grey"
   ]
   node [
     id 22
     label "22"
-    pos 161
-    pos 162
+    pos 151
+    pos 7
     chrg_station 0
     color "grey"
   ]
   node [
     id 23
     label "23"
-    pos 106
-    pos 193
+    pos 151
+    pos 109
     chrg_station 0
     color "grey"
   ]
   node [
     id 24
     label "24"
-    pos 98
-    pos 152
+    pos 9
+    pos 176
     chrg_station 0
     color "grey"
   ]
   node [
     id 25
     label "25"
-    pos 174
-    pos 9
+    pos 48
+    pos 154
     chrg_station 0
     color "grey"
   ]
   node [
     id 26
     label "26"
-    pos 97
-    pos 36
+    pos 173
+    pos 54
     chrg_station 0
     color "grey"
   ]
   node [
     id 27
     label "27"
-    pos 59
-    pos 101
+    pos 124
+    pos 180
     chrg_station 0
     color "grey"
   ]
   node [
     id 28
     label "28"
-    pos 138
-    pos 60
+    pos 197
+    pos 3
     chrg_station 0
     color "grey"
   ]
   node [
     id 29
     label "29"
-    pos 89
-    pos 151
+    pos 42
+    pos 101
     chrg_station 0
     color "grey"
   ]
   edge [
     source 0
-    target 11
-    weight 74.24957912338628
-  ]
-  edge [
-    source 0
-    target 14
-    weight 59.07622195096772
-  ]
-  edge [
-    source 0
-    target 1
-    weight 36.124783736376884
+    target 4
+    weight 117.88553770501282
   ]
   edge [
     source 1
-    target 22
-    weight 73.60027173862879
-  ]
-  edge [
-    source 1
-    target 26
-    weight 69.92138442565336
+    target 8
+    weight 99.0
   ]
   edge [
     source 1
     target 4
-    weight 70.60453243241541
+    weight 49.64876634922564
   ]
   edge [
     source 2
-    target 8
-    weight 99.29753269845128
+    target 12
+    weight 155.32224567009067
   ]
   edge [
     source 2
-    target 15
-    weight 99.46356116689167
+    target 5
+    weight 166.88319268278636
   ]
   edge [
     source 2
-    target 16
-    weight 128.2692480682724
-  ]
-  edge [
-    source 2
-    target 27
-    weight 66.40030120413611
+    target 14
+    weight 87.32124598286491
   ]
   edge [
     source 3
-    target 26
-    weight 28.42534080710379
+    target 20
+    weight 51.97114584074513
+  ]
+  edge [
+    source 3
+    target 27
+    weight 140.11780757633915
+  ]
+  edge [
+    source 3
+    target 6
+    weight 92.57429448826494
   ]
   edge [
     source 4
-    target 20
-    weight 44.384682042344295
+    target 22
+    weight 108.37435120913067
+  ]
+  edge [
+    source 4
+    target 7
+    weight 110.5350623105628
   ]
   edge [
     source 5
-    target 19
-    weight 164.24676556937126
+    target 16
+    weight 101.04454463255303
   ]
   edge [
     source 5
-    target 14
-    weight 113.28283188550682
+    target 23
+    weight 99.28242543370907
+  ]
+  edge [
+    source 5
+    target 13
+    weight 137.00364958642524
   ]
   edge [
     source 6
-    target 26
-    weight 29.068883707497267
+    target 8
+    weight 36.49657518178932
   ]
   edge [
     source 7
-    target 13
-    weight 65.45991139621256
-  ]
-  edge [
-    source 7
-    target 18
-    weight 140.18559127100045
+    target 19
+    weight 114.49017425089369
   ]
   edge [
     source 8
-    target 10
-    weight 199.24858845171275
+    target 26
+    weight 90.60905032059435
   ]
   edge [
     source 9
-    target 25
-    weight 13.038404810405298
+    target 11
+    weight 84.87638069569178
   ]
   edge [
     source 9
+    target 22
+    weight 95.85405573057407
+  ]
+  edge [
+    source 10
+    target 15
+    weight 126.03570922560003
+  ]
+  edge [
+    source 13
     target 28
-    weight 74.65252842335616
+    weight 86.28441342444185
   ]
   edge [
-    source 9
-    target 16
-    weight 106.96261028976434
+    source 14
+    target 15
+    weight 141.9929575718458
   ]
   edge [
-    source 12
-    target 14
-    weight 63.071388124885914
+    source 14
+    target 29
+    weight 77.23341245859851
   ]
   edge [
     source 15
-    target 21
-    weight 131.24404748406687
+    target 19
+    weight 220.41097976280582
+  ]
+  edge [
+    source 16
+    target 17
+    weight 46.32493928760188
   ]
   edge [
     source 17
     target 18
-    weight 19.4164878389476
-  ]
-  edge [
-    source 18
-    target 21
-    weight 64.00781202322104
-  ]
-  edge [
-    source 19
-    target 23
-    weight 67.468511173732
+    weight 71.449282711585
   ]
   edge [
     source 20
-    target 28
-    weight 63.12685640834652
+    target 21
+    weight 73.35529974037323
+  ]
+  edge [
+    source 22
+    target 25
+    weight 179.49373248110922
   ]
   edge [
     source 24
-    target 27
-    weight 64.20280367709809
-  ]
-  edge [
-    source 27
-    target 29
-    weight 58.309518948453004
+    target 26
+    weight 204.40156555173445
   ]
 ]

@@ -108,10 +108,12 @@ def draw_tree(Tree : nx.Graph, flows: list):
         flows: list of flows in the form [[source1, destination1], [source2, destination2], ...]
     """
 
-    colors = {'chrg_station':'green', 'o_k':'red', 'd_k':'yellow', 'od_k': 'orange'}
+    colors = {'chrg_station':'green', 'o_k':'red', 'd_k':'yellow', 'od_k': 'orange', 'ch-od_k': 'blue'}
     
     for node in Tree.nodes():
-        if Tree.nodes[node]['chrg_station']:
+        if Tree.nodes[node]['chrg_station'] and (str(node) in [flow[0] for flow in flows] or str(node) in [flow[1] for flow in flows]):
+            Tree.nodes[node]['color'] = colors['ch-od_k']
+        elif Tree.nodes[node]['chrg_station']:
             Tree.nodes[node]['color'] = colors['chrg_station']
         elif str(node) in [flow[0] for flow in flows]:
             if str(node) in [flow[1] for flow in flows]:
@@ -120,7 +122,6 @@ def draw_tree(Tree : nx.Graph, flows: list):
                 Tree.nodes[node]['color'] = colors['o_k']
         elif str(node) in [flow[1] for flow in flows]:
             Tree.nodes[node]['color'] = colors['d_k']
-
     plt.figure(figsize=(8, 8))
     nx.draw_networkx(
             Tree, 

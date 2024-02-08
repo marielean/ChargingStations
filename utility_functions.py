@@ -122,7 +122,7 @@ def draw_tree(Tree : nx.Graph, flows: list):
                 Tree.nodes[node]['color'] = colors['o_k']
         elif str(node) in [flow[1] for flow in flows]:
             Tree.nodes[node]['color'] = colors['d_k']
-    plt.figure(figsize=(8, 8))
+    plt.figure(figsize=(15,15))
     nx.draw_networkx(
             Tree, 
             with_labels = True,

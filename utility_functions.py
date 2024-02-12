@@ -4,6 +4,21 @@ from scipy import spatial
 import random, json
 import numpy as np
 
+def save_results(filename: str, results: list , mode: str = 'w') -> None:
+    '''
+    Function to save the results of the algorithm in a json file
+    '''
+    with open('saved_data/'+filename+'.json', mode) as file:
+        json.dump(results, file)
+
+def load_results(filename: str) -> list:
+    '''
+    Return the results
+    '''
+    with open('saved_data/'+filename+'.json', 'r') as file:
+        results = json.load(file)
+    return results
+
 def get_weights(Tree: nx.Graph, flows: list):
     '''
     Returns the weights of the nodes calculated as the sum of how much each node is used by the flows
@@ -117,7 +132,7 @@ def save_tree(Tree: nx.Graph, flows: list, filename: str) -> None:
     with open('tree_net/flows.json', 'w') as file:
         json.dump(flows, file)
 
-def load_all_data(filename: str) -> (nx.Graph, list):
+def load_all_data(filename: str) -> any:
     """
     Loads all necessary data from two files
     :param

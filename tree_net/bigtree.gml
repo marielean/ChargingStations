@@ -6,1296 +6,1296 @@ graph [
   node [
     id 0
     label "0"
-    pos 167
-    pos 121
+    pos 159
+    pos 141
     chrg_station 0
     color "grey"
   ]
   node [
     id 1
     label "1"
-    pos 63
-    pos 88
+    pos 114
+    pos 98
     chrg_station 0
     color "grey"
   ]
   node [
     id 2
     label "2"
-    pos 8
-    pos 11
+    pos 36
+    pos 86
     chrg_station 0
     color "grey"
   ]
   node [
     id 3
     label "3"
-    pos 46
-    pos 176
+    pos 56
+    pos 180
     chrg_station 0
     color "grey"
   ]
   node [
     id 4
     label "4"
-    pos 43
-    pos 186
+    pos 193
+    pos 191
     chrg_station 0
     color "grey"
   ]
   node [
     id 5
     label "5"
-    pos 97
-    pos 44
+    pos 155
+    pos 91
     chrg_station 0
     color "grey"
   ]
   node [
     id 6
     label "6"
-    pos 22
-    pos 158
+    pos 174
+    pos 145
     chrg_station 0
     color "grey"
   ]
   node [
     id 7
     label "7"
-    pos 166
-    pos 49
+    pos 148
+    pos 134
     chrg_station 0
     color "grey"
   ]
   node [
     id 8
     label "8"
-    pos 90
-    pos 40
+    pos 125
+    pos 64
     chrg_station 0
     color "grey"
   ]
   node [
     id 9
     label "9"
-    pos 40
-    pos 7
+    pos 127
+    pos 172
     chrg_station 0
     color "grey"
   ]
   node [
     id 10
     label "10"
-    pos 34
-    pos 102
+    pos 58
+    pos 112
     chrg_station 0
     color "grey"
   ]
   node [
     id 11
     label "11"
-    pos 123
-    pos 71
+    pos 0
+    pos 143
     chrg_station 0
     color "grey"
   ]
   node [
     id 12
     label "12"
-    pos 16
-    pos 73
+    pos 27
+    pos 123
     chrg_station 0
     color "grey"
   ]
   node [
     id 13
     label "13"
-    pos 153
-    pos 19
+    pos 74
+    pos 80
     chrg_station 0
     color "grey"
   ]
   node [
     id 14
     label "14"
-    pos 86
-    pos 104
+    pos 67
+    pos 94
     chrg_station 0
     color "grey"
   ]
   node [
     id 15
     label "15"
-    pos 38
-    pos 63
+    pos 53
+    pos 93
     chrg_station 0
     color "grey"
   ]
   node [
     id 16
     label "16"
-    pos 76
-    pos 54
+    pos 7
+    pos 160
     chrg_station 0
     color "grey"
   ]
   node [
     id 17
     label "17"
-    pos 4
-    pos 32
+    pos 104
+    pos 36
     chrg_station 0
     color "grey"
   ]
   node [
     id 18
     label "18"
-    pos 85
-    pos 11
+    pos 75
+    pos 80
     chrg_station 0
     color "grey"
   ]
   node [
     id 19
     label "19"
-    pos 105
-    pos 40
+    pos 91
+    pos 30
     chrg_station 0
     color "grey"
   ]
   node [
     id 20
     label "20"
-    pos 16
-    pos 163
+    pos 91
+    pos 7
     chrg_station 0
     color "grey"
   ]
   node [
     id 21
     label "21"
-    pos 180
-    pos 108
+    pos 25
+    pos 77
     chrg_station 0
     color "grey"
   ]
   node [
     id 22
     label "22"
-    pos 16
-    pos 164
+    pos 190
+    pos 4
     chrg_station 0
     color "grey"
   ]
   node [
     id 23
     label "23"
-    pos 8
-    pos 33
+    pos 107
+    pos 103
     chrg_station 0
     color "grey"
   ]
   node [
     id 24
     label "24"
-    pos 123
-    pos 124
+    pos 161
+    pos 6
     chrg_station 0
     color "grey"
   ]
   node [
     id 25
     label "25"
-    pos 187
-    pos 144
+    pos 188
+    pos 148
     chrg_station 0
     color "grey"
   ]
   node [
     id 26
     label "26"
-    pos 194
-    pos 24
+    pos 153
+    pos 65
     chrg_station 0
     color "grey"
   ]
   node [
     id 27
     label "27"
-    pos 177
-    pos 186
+    pos 80
+    pos 123
     chrg_station 0
     color "grey"
   ]
   node [
     id 28
     label "28"
-    pos 89
-    pos 82
+    pos 172
+    pos 95
     chrg_station 0
     color "grey"
   ]
   node [
     id 29
     label "29"
-    pos 164
-    pos 152
+    pos 47
+    pos 97
     chrg_station 0
     color "grey"
   ]
   node [
     id 30
     label "30"
-    pos 53
-    pos 39
+    pos 1
+    pos 161
     chrg_station 0
     color "grey"
   ]
   node [
     id 31
     label "31"
-    pos 192
-    pos 114
+    pos 170
+    pos 34
     chrg_station 0
     color "grey"
   ]
   node [
     id 32
     label "32"
-    pos 42
-    pos 137
+    pos 183
+    pos 100
     chrg_station 0
     color "grey"
   ]
   node [
     id 33
     label "33"
-    pos 38
-    pos 32
+    pos 193
+    pos 16
     chrg_station 0
     color "grey"
   ]
   node [
     id 34
     label "34"
-    pos 34
-    pos 69
+    pos 83
+    pos 114
     chrg_station 0
     color "grey"
   ]
   node [
     id 35
     label "35"
-    pos 59
-    pos 103
+    pos 110
+    pos 160
     chrg_station 0
     color "grey"
   ]
   node [
     id 36
     label "36"
-    pos 110
-    pos 139
+    pos 46
+    pos 60
     chrg_station 0
     color "grey"
   ]
   node [
     id 37
     label "37"
-    pos 145
-    pos 91
+    pos 174
+    pos 68
     chrg_station 0
     color "grey"
   ]
   node [
     id 38
     label "38"
-    pos 169
-    pos 199
+    pos 51
+    pos 145
     chrg_station 0
     color "grey"
   ]
   node [
     id 39
     label "39"
-    pos 134
-    pos 93
+    pos 101
+    pos 30
     chrg_station 0
     color "grey"
   ]
   node [
     id 40
     label "40"
-    pos 103
-    pos 129
+    pos 30
+    pos 135
     chrg_station 0
     color "grey"
   ]
   node [
     id 41
     label "41"
-    pos 163
-    pos 66
+    pos 105
+    pos 65
     chrg_station 0
     color "grey"
   ]
   node [
     id 42
     label "42"
-    pos 18
-    pos 150
+    pos 13
+    pos 139
     chrg_station 0
     color "grey"
   ]
   node [
     id 43
     label "43"
-    pos 80
-    pos 82
+    pos 135
+    pos 161
     chrg_station 0
     color "grey"
   ]
   node [
     id 44
     label "44"
-    pos 61
-    pos 37
+    pos 158
+    pos 2
     chrg_station 0
     color "grey"
   ]
   node [
     id 45
     label "45"
-    pos 104
-    pos 13
+    pos 73
+    pos 74
     chrg_station 0
     color "grey"
   ]
   node [
     id 46
     label "46"
-    pos 110
-    pos 183
+    pos 83
+    pos 9
     chrg_station 0
     color "grey"
   ]
   node [
     id 47
     label "47"
-    pos 83
-    pos 74
+    pos 84
+    pos 137
     chrg_station 0
     color "grey"
   ]
   node [
     id 48
     label "48"
-    pos 41
-    pos 122
+    pos 192
+    pos 117
     chrg_station 0
     color "grey"
   ]
   node [
     id 49
     label "49"
-    pos 73
-    pos 175
+    pos 64
+    pos 47
     chrg_station 0
     color "grey"
   ]
   node [
     id 50
     label "50"
-    pos 147
-    pos 93
+    pos 62
+    pos 2
     chrg_station 0
     color "grey"
   ]
   node [
     id 51
     label "51"
-    pos 40
-    pos 94
+    pos 129
+    pos 190
     chrg_station 0
     color "grey"
   ]
   node [
     id 52
     label "52"
-    pos 181
-    pos 79
+    pos 172
+    pos 84
     chrg_station 0
     color "grey"
   ]
   node [
     id 53
     label "53"
-    pos 54
-    pos 119
+    pos 89
+    pos 19
     chrg_station 0
     color "grey"
   ]
   node [
     id 54
     label "54"
-    pos 15
-    pos 68
+    pos 184
+    pos 70
     chrg_station 0
     color "grey"
   ]
   node [
     id 55
     label "55"
-    pos 112
-    pos 87
+    pos 14
+    pos 73
     chrg_station 0
     color "grey"
   ]
   node [
     id 56
     label "56"
-    pos 141
-    pos 116
+    pos 190
+    pos 190
     chrg_station 0
     color "grey"
   ]
   node [
     id 57
     label "57"
-    pos 176
-    pos 77
+    pos 42
+    pos 81
     chrg_station 0
     color "grey"
   ]
   node [
     id 58
     label "58"
-    pos 111
-    pos 23
+    pos 191
+    pos 60
     chrg_station 0
     color "grey"
   ]
   node [
     id 59
     label "59"
-    pos 16
-    pos 90
+    pos 52
+    pos 120
     chrg_station 0
     color "grey"
   ]
   node [
     id 60
     label "60"
-    pos 157
-    pos 98
+    pos 130
+    pos 5
     chrg_station 0
     color "grey"
   ]
   node [
     id 61
     label "61"
-    pos 15
-    pos 77
+    pos 5
+    pos 156
     chrg_station 0
     color "grey"
   ]
   node [
     id 62
     label "62"
-    pos 22
-    pos 123
+    pos 113
+    pos 166
     chrg_station 0
     color "grey"
   ]
   node [
     id 63
     label "63"
-    pos 189
-    pos 172
+    pos 62
+    pos 69
     chrg_station 0
     color "grey"
   ]
   node [
     id 64
     label "64"
-    pos 76
-    pos 20
+    pos 134
+    pos 152
     chrg_station 0
     color "grey"
   ]
   node [
     id 65
     label "65"
-    pos 182
-    pos 106
+    pos 114
+    pos 108
     chrg_station 0
     color "grey"
   ]
   node [
     id 66
     label "66"
-    pos 132
-    pos 101
+    pos 3
+    pos 27
     chrg_station 0
     color "grey"
   ]
   node [
     id 67
     label "67"
-    pos 167
-    pos 183
+    pos 8
+    pos 24
     chrg_station 0
     color "grey"
   ]
   node [
     id 68
     label "68"
-    pos 155
-    pos 42
+    pos 193
+    pos 169
     chrg_station 0
     color "grey"
   ]
   node [
     id 69
     label "69"
-    pos 190
-    pos 20
+    pos 125
+    pos 126
     chrg_station 0
     color "grey"
   ]
   node [
     id 70
     label "70"
-    pos 4
-    pos 168
+    pos 35
+    pos 187
     chrg_station 0
     color "grey"
   ]
   node [
     id 71
     label "71"
-    pos 53
-    pos 100
+    pos 164
+    pos 52
     chrg_station 0
     color "grey"
   ]
   node [
     id 72
     label "72"
-    pos 22
-    pos 66
+    pos 4
+    pos 187
     chrg_station 0
     color "grey"
   ]
   node [
     id 73
     label "73"
-    pos 193
-    pos 105
+    pos 177
+    pos 26
     chrg_station 0
     color "grey"
   ]
   node [
     id 74
     label "74"
-    pos 36
-    pos 105
+    pos 37
+    pos 172
     chrg_station 0
     color "grey"
   ]
   node [
     id 75
     label "75"
-    pos 89
-    pos 77
+    pos 136
+    pos 31
     chrg_station 0
     color "grey"
   ]
   node [
     id 76
     label "76"
-    pos 52
-    pos 102
+    pos 85
+    pos 58
     chrg_station 0
     color "grey"
   ]
   node [
     id 77
     label "77"
-    pos 42
-    pos 27
+    pos 63
+    pos 58
     chrg_station 0
     color "grey"
   ]
   node [
     id 78
     label "78"
-    pos 92
-    pos 185
+    pos 113
+    pos 21
     chrg_station 0
     color "grey"
   ]
   node [
     id 79
     label "79"
-    pos 128
-    pos 196
+    pos 96
+    pos 17
     chrg_station 0
     color "grey"
   ]
   node [
     id 80
     label "80"
-    pos 191
-    pos 136
+    pos 39
+    pos 42
     chrg_station 0
     color "grey"
   ]
   node [
     id 81
     label "81"
-    pos 118
-    pos 34
+    pos 127
+    pos 116
     chrg_station 0
     color "grey"
   ]
   node [
     id 82
     label "82"
-    pos 103
-    pos 185
+    pos 123
+    pos 117
     chrg_station 0
     color "grey"
   ]
   node [
     id 83
     label "83"
-    pos 125
-    pos 47
+    pos 56
+    pos 186
     chrg_station 0
     color "grey"
   ]
   node [
     id 84
     label "84"
-    pos 68
-    pos 190
+    pos 197
+    pos 75
     chrg_station 0
     color "grey"
   ]
   node [
     id 85
     label "85"
-    pos 31
-    pos 1
+    pos 131
+    pos 94
     chrg_station 0
     color "grey"
   ]
   node [
     id 86
     label "86"
-    pos 99
-    pos 98
+    pos 76
+    pos 156
     chrg_station 0
     color "grey"
   ]
   node [
     id 87
     label "87"
-    pos 12
-    pos 183
+    pos 199
+    pos 128
     chrg_station 0
     color "grey"
   ]
   node [
     id 88
     label "88"
-    pos 63
-    pos 14
+    pos 193
+    pos 165
     chrg_station 0
     color "grey"
   ]
   node [
     id 89
     label "89"
-    pos 120
-    pos 200
+    pos 171
+    pos 180
     chrg_station 0
     color "grey"
   ]
   node [
     id 90
     label "90"
-    pos 56
-    pos 170
+    pos 156
+    pos 50
     chrg_station 0
     color "grey"
   ]
   node [
     id 91
     label "91"
-    pos 185
-    pos 24
+    pos 53
+    pos 39
     chrg_station 0
     color "grey"
   ]
   node [
     id 92
     label "92"
-    pos 168
-    pos 89
+    pos 83
+    pos 83
     chrg_station 0
     color "grey"
   ]
   node [
     id 93
     label "93"
-    pos 43
-    pos 189
+    pos 51
+    pos 199
     chrg_station 0
     color "grey"
   ]
   node [
     id 94
     label "94"
-    pos 60
-    pos 181
+    pos 191
+    pos 194
     chrg_station 0
     color "grey"
   ]
   node [
     id 95
     label "95"
-    pos 131
-    pos 183
+    pos 53
+    pos 74
     chrg_station 0
     color "grey"
   ]
   node [
     id 96
     label "96"
-    pos 100
-    pos 162
+    pos 19
+    pos 48
     chrg_station 0
     color "grey"
   ]
   node [
     id 97
     label "97"
-    pos 15
-    pos 112
+    pos 18
+    pos 68
     chrg_station 0
     color "grey"
   ]
   node [
     id 98
     label "98"
-    pos 122
-    pos 13
+    pos 68
+    pos 111
     chrg_station 0
     color "grey"
   ]
   node [
     id 99
     label "99"
-    pos 48
-    pos 174
+    pos 173
+    pos 79
     chrg_station 0
     color "grey"
   ]
   edge [
     source 0
-    target 14
-    weight 82.76472678623425
+    target 40
+    weight 129.1394595001853
   ]
   edge [
     source 0
-    target 18
-    weight 137.20058308913997
+    target 8
+    weight 84.17244204607586
   ]
   edge [
     source 0
-    target 21
-    weight 18.384776310850235
+    target 94
+    weight 61.91122676865643
+  ]
+  edge [
+    source 0
+    target 42
+    weight 146.01369798755184
   ]
   edge [
     source 1
-    target 10
-    weight 32.202484376209235
+    target 7
+    weight 49.51767361255979
   ]
   edge [
     source 1
-    target 71
-    weight 15.620499351813308
+    target 67
+    weight 129.2749008895385
   ]
   edge [
     source 1
-    target 96
-    weight 82.73451516749222
-  ]
-  edge [
-    source 1
-    target 48
-    weight 40.496913462633174
+    target 61
+    weight 123.47064428438041
   ]
   edge [
     source 2
-    target 28
-    weight 107.71258050942797
+    target 57
+    weight 7.810249675906654
   ]
   edge [
     source 2
-    target 62
-    weight 112.8716084761797
+    target 65
+    weight 81.04319835741924
+  ]
+  edge [
+    source 2
+    target 82
+    weight 92.35799911215054
   ]
   edge [
     source 3
-    target 44
-    weight 139.8070098385628
-  ]
-  edge [
-    source 3
-    target 27
-    weight 131.38112497615478
+    target 95
+    weight 106.04244433244644
   ]
   edge [
     source 4
-    target 44
-    weight 150.08331019803634
+    target 83
+    weight 137.09121051329294
+  ]
+  edge [
+    source 4
+    target 43
+    weight 65.29931086925804
+  ]
+  edge [
+    source 4
+    target 33
+    weight 175.0
   ]
   edge [
     source 5
-    target 97
-    weight 106.5269918846862
+    target 96
+    weight 142.63590010933433
   ]
   edge [
     source 5
-    target 74
-    weight 86.2670273047588
+    target 75
+    weight 62.93647591023825
+  ]
+  edge [
+    source 5
+    target 35
+    weight 82.37718130647589
   ]
   edge [
     source 6
-    target 13
-    weight 191.0026177831079
+    target 60
+    weight 146.75149062275312
+  ]
+  edge [
+    source 6
+    target 46
+    weight 163.63679292872982
+  ]
+  edge [
+    source 6
+    target 7
+    weight 28.231188426986208
   ]
   edge [
     source 7
-    target 63
-    weight 125.13193037750197
-  ]
-  edge [
-    source 7
-    target 53
-    weight 132.07573584879245
+    target 15
+    weight 103.46980235798269
   ]
   edge [
     source 8
-    target 14
-    weight 64.1248781675256
+    target 66
+    weight 127.4872542648872
   ]
   edge [
     source 9
-    target 46
-    weight 189.40960904874916
+    target 43
+    weight 13.601470508735444
   ]
   edge [
-    source 9
-    target 19
-    weight 72.89718787443039
+    source 10
+    target 18
+    weight 36.235341863986875
+  ]
+  edge [
+    source 10
+    target 51
+    weight 105.47511554864494
+  ]
+  edge [
+    source 10
+    target 34
+    weight 25.079872407968907
   ]
   edge [
     source 11
-    target 84
-    weight 131.0953851209111
+    target 16
+    weight 18.384776310850235
   ]
   edge [
     source 11
-    target 25
-    weight 97.082439194738
+    target 88
+    weight 194.2498391247725
   ]
   edge [
     source 12
-    target 82
-    weight 141.82030884185804
+    target 44
+    weight 178.33115263464205
+  ]
+  edge [
+    source 12
+    target 85
+    weight 107.96758772891057
+  ]
+  edge [
+    source 12
+    target 98
+    weight 42.720018726587654
   ]
   edge [
     source 12
     target 25
-    weight 185.15398996510984
+    weight 162.92943257741985
   ]
   edge [
     source 13
-    target 57
-    weight 62.39390995922599
+    target 73
+    weight 116.29703349613007
   ]
   edge [
     source 14
-    target 32
-    weight 55.0
+    target 73
+    weight 129.3213052826177
   ]
   edge [
     source 15
-    target 70
-    weight 110.3675676999362
-  ]
-  edge [
-    source 15
-    target 42
-    weight 89.26925562588724
+    target 71
+    weight 118.33004690272035
   ]
   edge [
     source 16
-    target 67
-    weight 157.8670326572334
+    target 55
+    weight 87.28115489611719
+  ]
+  edge [
+    source 16
+    target 89
+    weight 165.21501142450705
+  ]
+  edge [
+    source 16
+    target 35
+    weight 103.0
   ]
   edge [
     source 17
-    target 85
-    weight 41.10960958218893
+    target 39
+    weight 6.708203932499369
   ]
   edge [
     source 17
-    target 77
-    weight 38.3275357934736
+    target 70
+    weight 166.01807130550577
+  ]
+  edge [
+    source 17
+    target 99
+    weight 81.30190649671138
   ]
   edge [
     source 18
-    target 53
-    weight 112.36102527122117
-  ]
-  edge [
-    source 18
-    target 93
-    weight 182.8879438344693
+    target 50
+    weight 79.07591289387686
   ]
   edge [
     source 19
-    target 47
-    weight 40.496913462633174
+    target 22
+    weight 102.35721762533407
+  ]
+  edge [
+    source 19
+    target 80
+    weight 53.36665625650534
   ]
   edge [
     source 20
-    target 59
-    weight 73.0
+    target 28
+    weight 119.60351165413162
+  ]
+  edge [
+    source 20
+    target 73
+    weight 88.07383266328314
   ]
   edge [
     source 21
-    target 40
-    weight 79.81227975693966
+    target 69
+    weight 111.35977729862789
   ]
   edge [
-    source 22
-    target 29
-    weight 148.48568954616468
-  ]
-  edge [
-    source 23
-    target 87
-    weight 150.05332385522155
+    source 21
+    target 81
+    weight 109.20164833920778
   ]
   edge [
     source 23
-    target 37
-    weight 148.77163708180402
-  ]
-  edge [
-    source 24
     target 48
-    weight 82.02438661763951
+    weight 86.14522621712709
+  ]
+  edge [
+    source 23
+    target 93
+    weight 111.13955191559843
+  ]
+  edge [
+    source 23
+    target 95
+    weight 61.29437168288782
   ]
   edge [
     source 24
-    target 83
-    weight 77.02596964660685
+    target 76
+    weight 92.0869154657707
+  ]
+  edge [
+    source 24
+    target 77
+    weight 110.9414259868693
   ]
   edge [
     source 25
-    target 88
-    weight 179.655225362359
+    target 43
+    weight 54.57105459856901
   ]
   edge [
     source 26
+    target 79
+    weight 74.51845409024533
+  ]
+  edge [
+    source 26
+    target 73
+    weight 45.79301256742124
+  ]
+  edge [
+    source 26
+    target 31
+    weight 35.35533905932738
+  ]
+  edge [
+    source 27
+    target 78
+    weight 107.20541031123382
+  ]
+  edge [
+    source 27
+    target 48
+    weight 112.16059914247963
+  ]
+  edge [
+    source 28
+    target 95
+    weight 120.83873551142449
+  ]
+  edge [
+    source 29
+    target 34
+    weight 39.81205847478876
+  ]
+  edge [
+    source 29
+    target 73
+    weight 148.12494725737457
+  ]
+  edge [
+    source 30
     target 37
-    weight 83.00602387778854
-  ]
-  edge [
-    source 27
-    target 29
-    weight 36.40054944640259
-  ]
-  edge [
-    source 27
-    target 94
-    weight 117.10678887237921
-  ]
-  edge [
-    source 27
-    target 71
-    weight 150.90394295710104
+    weight 196.41283053812955
   ]
   edge [
     source 30
-    target 75
-    weight 52.3450093132096
-  ]
-  edge [
-    source 30
-    target 40
-    weight 102.95630140987001
+    target 96
+    weight 114.42464769445436
   ]
   edge [
     source 31
-    target 79
-    weight 104.01922899156675
+    target 62
+    weight 143.7810835958611
+  ]
+  edge [
+    source 31
+    target 87
+    weight 98.37174391053561
+  ]
+  edge [
+    source 31
+    target 37
+    weight 34.23448553724738
   ]
   edge [
     source 32
-    target 60
-    weight 121.43310915891102
+    target 49
+    weight 130.26895255585654
   ]
   edge [
     source 32
-    target 81
-    weight 128.00390619039717
+    target 38
+    weight 139.4596715900335
   ]
   edge [
     source 33
-    target 74
-    weight 73.02739212103907
-  ]
-  edge [
-    source 33
-    target 51
-    weight 62.03224967708329
+    target 90
+    weight 50.24937810560445
   ]
   edge [
     source 34
-    target 37
-    weight 113.1591799192624
-  ]
-  edge [
-    source 35
-    target 38
-    weight 146.0
-  ]
-  edge [
-    source 35
-    target 70
-    weight 85.14693182963201
+    target 82
+    weight 40.11234224026316
   ]
   edge [
     source 36
-    target 45
-    weight 126.14277624977183
-  ]
-  edge [
-    source 36
-    target 90
-    weight 62.26556030423239
-  ]
-  edge [
-    source 36
-    target 55
-    weight 52.03844732503075
-  ]
-  edge [
-    source 36
-    target 51
-    weight 83.21658488546619
-  ]
-  edge [
-    source 37
-    target 80
-    weight 64.35060217278468
+    target 97
+    weight 29.120439557122072
   ]
   edge [
     source 38
-    target 86
-    weight 122.88612614937456
-  ]
-  edge [
-    source 38
-    target 72
-    weight 198.23723161908813
-  ]
-  edge [
-    source 39
-    target 62
-    weight 115.94826432508596
+    target 91
+    weight 106.01886624558857
   ]
   edge [
     source 40
-    target 77
-    weight 118.84864324004712
+    target 52
+    weight 150.88074761214565
   ]
   edge [
     source 41
-    target 78
-    weight 138.5712812959453
-  ]
-  edge [
-    source 41
-    target 42
-    weight 167.57386431063765
+    target 50
+    weight 76.27581530209953
   ]
   edge [
     source 42
-    target 76
-    weight 58.82176467941097
+    target 99
+    weight 170.88007490635061
   ]
   edge [
-    source 42
-    target 98
-    weight 172.00290695217916
+    source 45
+    target 53
+    weight 57.28001396647874
   ]
   edge [
-    source 43
-    target 44
-    weight 48.84669896727925
+    source 45
+    target 47
+    weight 63.953107821277925
+  ]
+  edge [
+    source 45
+    target 79
+    weight 61.465437442517235
+  ]
+  edge [
+    source 46
+    target 58
+    weight 119.4361754243663
   ]
   edge [
     source 47
-    target 56
-    weight 71.61005515987263
-  ]
-  edge [
-    source 47
-    target 73
-    weight 114.28473213863697
-  ]
-  edge [
-    source 47
-    target 88
-    weight 63.245553203367585
+    target 91
+    weight 102.7861858422619
   ]
   edge [
     source 48
-    target 58
-    weight 121.24768039018313
+    target 84
+    weight 42.2965719651132
   ]
   edge [
-    source 49
-    target 83
-    weight 138.15932831336434
-  ]
-  edge [
-    source 50
-    target 80
-    weight 61.5223536610881
-  ]
-  edge [
-    source 51
-    target 70
-    weight 82.29216244576394
-  ]
-  edge [
-    source 52
-    target 97
-    weight 169.24833824885843
+    source 53
+    target 77
+    weight 46.87216658103186
   ]
   edge [
     source 54
-    target 84
-    weight 133.01503674397117
+    target 88
+    weight 95.42536350467836
   ]
   edge [
-    source 55
-    target 83
-    weight 42.05948168962618
+    source 56
+    target 80
+    weight 211.43556938225885
   ]
   edge [
-    source 57
-    target 67
-    weight 106.38138934982942
+    source 58
+    target 63
+    weight 129.31357237351384
   ]
   edge [
-    source 57
-    target 97
-    weight 164.7604321431575
+    source 58
+    target 80
+    weight 153.06207890917986
   ]
   edge [
     source 59
-    target 62
-    weight 33.54101966249684
+    target 74
+    weight 54.120236510939236
+  ]
+  edge [
+    source 59
+    target 67
+    weight 105.60303025955268
+  ]
+  edge [
+    source 61
+    target 81
+    weight 128.39003076563228
+  ]
+  edge [
+    source 61
+    target 92
+    weight 106.83164325236227
   ]
   edge [
     source 61
     target 75
-    weight 74.0
-  ]
-  edge [
-    source 62
-    target 70
-    weight 48.46648326421054
+    weight 181.06904760339356
   ]
   edge [
     source 64
-    target 79
-    weight 183.52111595127138
-  ]
-  edge [
-    source 64
-    target 97
-    weight 110.38568747804219
-  ]
-  edge [
-    source 65
-    target 98
-    weight 110.6752004741803
-  ]
-  edge [
-    source 66
-    target 90
-    weight 102.6498904042279
-  ]
-  edge [
-    source 67
-    target 92
-    weight 94.00531899844816
+    target 96
+    weight 155.05160431288675
   ]
   edge [
     source 68
-    target 69
-    weight 41.340053217188775
+    target 85
+    weight 97.30878685915265
   ]
   edge [
-    source 69
-    target 92
-    weight 72.42237223399962
+    source 70
+    target 97
+    weight 120.20815280171308
   ]
   edge [
     source 72
-    target 95
-    weight 159.90622251807463
+    target 79
+    weight 193.29769786523585
   ]
   edge [
-    source 76
-    target 91
-    weight 154.18495387034366
-  ]
-  edge [
-    source 77
-    target 98
-    weight 81.21576201698781
-  ]
-  edge [
-    source 79
-    target 88
-    weight 193.25889371514057
+    source 74
+    target 90
+    weight 170.42593699317015
   ]
   edge [
     source 80
-    target 81
-    weight 125.4312560727987
+    target 86
+    weight 119.85407794480753
   ]
   edge [
-    source 89
-    target 96
-    weight 42.941821107167776
-  ]
-  edge [
-    source 98
+    source 88
     target 99
-    weight 177.19198627477485
+    weight 88.29496021857646
   ]
 ]

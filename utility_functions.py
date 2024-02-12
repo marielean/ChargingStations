@@ -4,6 +4,40 @@ from scipy import spatial
 import random, json
 import numpy as np
 
+def get_weights(Tree: nx.Graph, flows: list):
+    '''
+    Returns the weights of the nodes calculated as the sum of how much each node is used by the flows
+    '''
+    def get_weights_nodes(Tree: nx.Graph, flows: list):
+        '''
+        Returns the weights of the nodes calculated as the sum of how much each node is used by the flows
+        '''
+        paths = get_all_paths_of_all_flows(Tree, flows)
+        nodes_weights = []
+        for node in Tree.nodes:
+            weight = 0
+            for path in paths:
+                if node in path:
+                    weight += 1
+            nodes_weights.append(weight)
+        return nodes_weights
+
+    def get_weight_of_paths(Tree: nx.Graph, flows: list):
+        '''
+        Returns the weights of the paths of the flows calculated as the sum of the weights of the nodes in the path
+        '''
+        paths = get_all_paths_of_all_flows(Tree, flows)
+        paths_weights = []
+        nodes_weights = get_weights_nodes(Tree, flows)
+        for flow in flows:
+            path = nx.shortest_path(Tree, source=flow[0], target=flow[1])
+            weight = 0
+            for node in path:
+                weight += nodes_weights[int(node)]
+            paths_weights.append(weight)
+        return paths_weights
+    
+    return get_weights_nodes(Tree, flows), get_weight_of_paths(Tree, flows)
 
 def generate_random_network_tree(N: int, K: int, L: int, edge_dim: int) -> nx.Graph:
     """

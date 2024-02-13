@@ -4,10 +4,29 @@ from scipy import spatial
 import random, json
 import numpy as np
 
+def get_wight_of_neighbours_of_a_node(Tree: nx.Graph, node: str):
+    '''
+    Returns the weight of the edges connected to the node
+    '''
+    node = str(node)
+    return [(int(ng_node), Tree.edges[(node, ng_node)]['weight']) for ng_node in list(Tree.neighbors(node))]
+
+def get_weight_of_nodes_edge_ordered(T: nx.Graph, flows: list, N: int, reverse: bool = True) -> any:
+    nodes_index = list(range(N))
+    nodes_weights, _ = get_weights(T, flows)
+    sorted_tuples = sorted(zip(nodes_weights, nodes_index), reverse=reverse)
+    sorted_nodes_weights, sorted_nodes_index = zip(*sorted_tuples)
+    sorted_nodes_weights = list(sorted_nodes_weights)
+    sorted_nodes_index = list(sorted_nodes_index)
+    
+
+    return sorted_nodes_weights, sorted_nodes_index
+
 def save_results(filename: str, results: list , mode: str = 'w') -> None:
     '''
     Function to save the results of the algorithm in a json file
     '''
+    results = [str(result) for result in results]
     with open('saved_data/'+filename+'.json', mode) as file:
         json.dump(results, file)
 
@@ -17,6 +36,8 @@ def load_results(filename: str) -> list:
     '''
     with open('saved_data/'+filename+'.json', 'r') as file:
         results = json.load(file)
+    
+    results = [str(result) for result in results]
     return results
 
 def get_weights(Tree: nx.Graph, flows: list):

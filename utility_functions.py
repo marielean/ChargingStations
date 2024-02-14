@@ -315,6 +315,8 @@ def is_admissible(Tree: nx.Graph, flows: list, L: int) -> bool:
             charge -= Tree.edges[path[i], path[i+1]]['weight']
             if Tree.nodes[path[i]]['chrg_station']:
                 charge = L
+                # la modifica si trova qui
+                charge -= Tree.edges[path[i], path[i+1]]['weight']
             if charge < 0:
                 return False
     return True

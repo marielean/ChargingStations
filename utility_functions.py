@@ -7,11 +7,27 @@ import numpy as np
 def get_wight_of_neighbours_of_a_node(Tree: nx.Graph, node: str):
     '''
     Returns the weight of the edges connected to the node
+    param:
+        Tree: Tree to be analyzed
+        node: node to be analyzed
+    return:
+        list of tuples (node, weight) -> [(node1, weight1), (node2, weight2), ...]
     '''
     node = str(node)
     return [(int(ng_node), Tree.edges[(node, ng_node)]['weight']) for ng_node in list(Tree.neighbors(node))]
 
 def get_weight_of_nodes_edge_ordered(T: nx.Graph, flows: list, N: int, reverse: bool = True) -> any:
+    '''
+    Returns the weights of the nodes and the edges ordered in a list
+    :param
+        T: Tree to be analyzed
+        flows: list of flows
+        N: number of nodes
+        reverse: if True, the list is ordered in descending order, otherwise in ascending order
+    :return
+        sorted_nodes_weights: list of weights of the nodes ordered
+        sorted_nodes_index: list of indexes of the nodes ordered
+    '''
     nodes_index = list(range(N))
     nodes_weights, _ = get_weights(T, flows)
     sorted_tuples = sorted(zip(nodes_weights, nodes_index), reverse=reverse)
@@ -25,6 +41,10 @@ def get_weight_of_nodes_edge_ordered(T: nx.Graph, flows: list, N: int, reverse: 
 def save_results(filename: str, results: list , mode: str = 'w') -> None:
     '''
     Function to save the results of the algorithm in a json file
+    :param
+        filename: name of the file to be saved
+        results: list of results to be saved
+        mode: mode to open the file
     '''
     results = [str(result) for result in results]
     with open('saved_data/'+filename+'.json', mode) as file:
@@ -32,7 +52,11 @@ def save_results(filename: str, results: list , mode: str = 'w') -> None:
 
 def load_results(filename: str) -> list:
     '''
-    Return the results
+    Return the results from a file 
+    :param
+        filename: name of the file to be loaded
+    :return
+        results: list of results loaded from the file
     '''
     with open('saved_data/'+filename+'.json', 'r') as file:
         results = json.load(file)
@@ -244,6 +268,16 @@ def get_chrg_stations_per_path(Tree: nx.Graph, path: list, L: int, charging_stat
     return charging_stations
 
 def get_chrg_stations_with_memory(Tree: nx.Graph, path: list, L: int, charging_stations: set):
+    '''
+    Returns the set of charging stations for a specific path of a flow with memory greedy algorithm.
+    :param
+        Tree: Tree to be analyzed
+        path: path of a flow
+        L: battery capacity per vehicle
+        charging_stations: set of charging stations, initially empty
+    :return
+        charging_stations: set of charging stations for the specific path
+    '''
     charge = L
     for i in range(len(path) - 1):
         if path[i] in charging_stations:

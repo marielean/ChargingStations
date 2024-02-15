@@ -354,6 +354,7 @@ def is_admissible_paths(Tree: nx.Graph, paths: list, L: int) -> bool:
             charge -= Tree.edges[path[i], path[i+1]]['weight']
             if Tree.nodes[path[i]]['chrg_station']:
                 charge = L
+                charge -= Tree.edges[path[i], path[i+1]]['weight']
             if charge < 0:
                 return False
     return True  

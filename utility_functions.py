@@ -42,9 +42,17 @@ def load_results(filename: str) -> list:
 
 def get_weights(Tree: nx.Graph, flows: list):
     '''
-    Returns the weights of the nodes calculated as the sum of how much each node is used by the flows
+    Returns:
+        - the weights of the nodes calculated as the sum of how much each node is used by the flows
+        - the weights of the paths of the flows calculated as the sum of the weights of the nodes in the path
+    :param
+        Tree: Tree to be analyzed
+        flows: list of flows
+    :return
+        nodes_weights: list of weights of the nodes
+        paths_weights: list of weights of the paths
     '''
-    def get_weights_nodes(Tree: nx.Graph, flows: list):
+    def get_nodes_weight(Tree: nx.Graph, flows: list):
         '''
         Returns the weights of the nodes calculated as the sum of how much each node is used by the flows
         '''
@@ -58,22 +66,21 @@ def get_weights(Tree: nx.Graph, flows: list):
             nodes_weights.append(weight)
         return nodes_weights
 
-    def get_weight_of_paths(Tree: nx.Graph, flows: list):
+    def get_paths_weight(Tree: nx.Graph, flows: list):
         '''
         Returns the weights of the paths of the flows calculated as the sum of the weights of the nodes in the path
         '''
         paths = get_all_paths_of_all_flows(Tree, flows)
-        paths_weights = []
-        nodes_weights = get_weights_nodes(Tree, flows)
-        for flow in flows:
-            path = nx.shortest_path(Tree, source=flow[0], target=flow[1])
+        paths_weight = []
+        nodes_weight = get_nodes_weight(Tree, flows)
+        for path in paths:
             weight = 0
             for node in path:
-                weight += nodes_weights[int(node)]
-            paths_weights.append(weight)
-        return paths_weights
+                weight += nodes_weight[int(node)]
+            paths_weight.append(weight)
+        return paths_weight
     
-    return get_weights_nodes(Tree, flows), get_weight_of_paths(Tree, flows)
+    return get_nodes_weight(Tree, flows), get_paths_weight(Tree, flows)
 
 def generate_random_network_tree(N: int, K: int, L: int, edge_dim: int) -> nx.Graph:
     """
@@ -214,6 +221,40 @@ def get_all_paths_of_all_flows(Tree: nx.Graph, flows: list) -> list:
     for flow in flows:
         paths.append(nx.shortest_path(Tree, flow[0], flow[1]))
     return paths
+
+def get_chrg_stations_per_path(Tree: nx.Graph, path: list, L: int, charging_stations: set):
+    '''
+    Returns the set of charging stations for a specific path of a flow with the naive greedy algorithm.
+    :param
+        Tree: Tree to be analyzed
+        path: path of a flow
+        L: battery capacity per vehicle
+        charging_stations: set of charging stations, initially empty
+    :return
+        charging_stations: set of charging stations for the specific path
+    '''
+    charge = L
+    for i in range(len(path) - 1):
+            charge -= Tree.edges[(path[i], path[i+1])]['weight']
+            if charge < 0:
+                charging_stations.add(path[i])
+                Tree.nodes[path[i]]['chrg_station'] = True
+                charge = L
+                charge -= Tree.edges[(path[i], path[i+1])]['weight']
+    return charging_stations
+
+def get_chrg_stations_with_memory(Tree: nx.Graph, path: list, L: int, charging_stations: set):
+    charge = L
+    for i in range(len(path) - 1):
+        if path[i] in charging_stations:
+            charge = L
+        charge -= Tree.edges[(path[i], path[i+1])]['weight']
+        if charge < 0:
+            charging_stations.add(path[i])
+            Tree.nodes[path[i]]['chrg_station'] = True
+            charge = L
+            charge -= Tree.edges[(path[i], path[i+1])]['weight']
+    return charging_stations
 
 def set_chrg_stations(Tree: nx.Graph, chrg_stations: list[str]) -> None:
     """

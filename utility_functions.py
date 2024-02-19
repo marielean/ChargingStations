@@ -4,14 +4,14 @@ from scipy import spatial
 import random, json
 import numpy as np
 
-def get_wight_of_neighbours_of_a_node(Tree: nx.Graph, node: str):
+def get_weight_of_neighbours_edges(Tree: nx.Graph, node: str):
     '''
     Returns the weight of the edges connected to the node
     param:
         Tree: Tree to be analyzed
         node: node to be analyzed
     return:
-        list of tuples (node, weight) -> [(node1, weight1), (node2, weight2), ...]
+        list of tuples (neighour_node, weight) -> [(node1, weight1), (node2, weight2), ...]
     '''
     node = str(node)
     return [(int(ng_node), Tree.edges[(node, ng_node)]['weight']) for ng_node in list(Tree.neighbors(node))]
@@ -126,14 +126,10 @@ def generate_random_network_tree(N: int, K: int, L: int, edge_dim: int) -> nx.Gr
     Tree.graph['edge_dim'] = edge_dim
 
     for node in Tree.nodes():
-        # pos corrisponde alle coordinate cartesiane del nodo nella forma (x,y) dentro un quadrato di dimensione edge_dim per lato
-        Tree.nodes[node]['pos'] = (random.randint(0, edge_dim), random.randint(0, edge_dim))
         Tree.nodes[node]['chrg_station'] = False
         Tree.nodes[node]['color'] = 'grey'
     for (u, v) in Tree.edges():
-        x1, y1 = Tree.nodes[u]['pos']
-        x2, y2 = Tree.nodes[v]['pos']
-        Tree.edges[u,v]['weight'] = get_distance((x1, y1), (x2, y2))
+        Tree.edges[u,v]['weight'] = random.uniform(1, L)
     return Tree
 
 def get_random_flows(Tree: nx.Graph, K: int) -> list:
@@ -290,6 +286,57 @@ def get_chrg_stations_with_memory(Tree: nx.Graph, path: list, L: int, charging_s
             charge -= Tree.edges[(path[i], path[i+1])]['weight']
     return charging_stations
 
+def get_chrg_stations_with_neighbours(Tree: nx.Graph, charging_stations: set, L: int, sorted_flows: list):
+    # Set the charging stations for the other flows based on the existing charging stations
+    charge = L
+    for flow in sorted_flows:
+        charge = L
+        path = nx.shortest_path(Tree, source=flow[0], target=flow[1])
+        for i in range(len(path) - 1):
+            if path[i] in charging_stations:
+                charge = L
+            charge -= Tree.edges[(path[i], path[i+1])]['weight']
+
+            # se non arrivo al nodo successivo, cerco nel vicinato se c'è una colonnina di ricarica
+            if charge < 0:
+                neighboring_nodes_with_edges = get_weight_of_neighbours_edges(Tree, path[i])
+
+                #se il nodo corrente ha almeno un vicino che non sia il nodo precedente e successivo del proprio cammino
+                if len(neighboring_nodes_with_edges) > 2:
+                    
+                    neighboring_nodes, weight_neighboring_edges = [list(elem) for elem in zip(*neighboring_nodes_with_edges)]
+                    neighboring_nodes = [str(node) for node in neighboring_nodes]
+                    
+                    # ricavo l'indice per eliminare successivamente anche gli archi associati ai nodi precedente e successivo nel cammino
+                    index = neighboring_nodes.index(str(path[i-1]))
+                    index1 = neighboring_nodes.index(str(path[i+1]))
+
+                    # rimuovo il nodo precedente e successivo del proprio cammino dal set dei vicini
+                    neighboring_nodes.remove(path[i+1])
+                    neighboring_nodes.remove(path[i-1])
+                    
+                    # rimuovo gli archi associati ai nodi eliminati
+                    element = weight_neighboring_edges[index]
+                    element1 = weight_neighboring_edges[index1]
+                    weight_neighboring_edges.remove(element)
+                    weight_neighboring_edges.remove(element1)
+
+                    # se è presente una stazione di ricarica nei vicini, allora la raggiungo e poi torno indietro per continuare con il cammino del flusso
+                    for node, edge_weight in zip(neighboring_nodes, weight_neighboring_edges):
+                        if node in charging_stations and charge - edge_weight >= 0:
+                            print(f'Node: {node} is in charging_stations')
+                            charge = L
+                            charge -= Tree.edges[(path[i], node)]['weight']
+                            break
+                else:
+                    # se non è presente alcun vicino utile, allora posiziono una stazione di ricarica nel nodo corrente
+                    charging_stations.add(path[i])
+                    charge = L
+                    Tree.nodes[path[i]]['chrg_station'] = True
+                    charge -= Tree.edges[(path[i], path[i+1])]['weight']
+    
+    return charging_stations
+
 def set_chrg_stations(Tree: nx.Graph, chrg_stations: list[str]) -> None:
     """
     Sets the charging stations in the graph
@@ -373,8 +420,18 @@ def set_on_tree_random_chrg_stations(Tree: nx.Graph) -> list:
             chrg_stations.append(node)
             Tree.nodes[node]['chrg_station'] = True
     return chrg_stations
+
+def check_admissibility_per_path(Tree: nx.Graph, path: list, L: int, charging_stations: set) -> bool:
+    charge = L
+    for i in range(len(path) - 1):
+        if path[i] in charging_stations:
+            charge = L
+        charge -= Tree.edges[(path[i], path[i+1])]['weight']
+        if charge < 0:
+            return False
+    return True
   
-def is_admissible(Tree: nx.Graph, flows: list, L: int) -> bool:
+def is_admissible(Tree: nx.Graph, flows: list, L: int, charging_stations: set) -> bool:
     """
     Function to check if the solution is admissible
     :param
@@ -386,16 +443,19 @@ def is_admissible(Tree: nx.Graph, flows: list, L: int) -> bool:
     """
     paths = get_all_paths_of_all_flows(Tree, flows)
     for path in paths:
-        charge = L
-        for i in range(len(path)-1):
-            charge -= Tree.edges[path[i], path[i+1]]['weight']
-            if Tree.nodes[path[i]]['chrg_station']:
-                charge = L
-                # la modifica si trova qui
-                charge -= Tree.edges[path[i], path[i+1]]['weight']
-            if charge < 0:
-                return False
+        if not check_admissibility_per_path(Tree, path, L, charging_stations):
+            return False
     return True
+
+def get_distances_from_chrg_stations(Tree: nx.Graph, node: str, charging_stations: set) -> list:
+    '''
+    Returns the distances between the node and the actual charging stations
+    '''
+    distances = []
+    for chrg_station in charging_stations:
+        path_distance = nx.shortest_path_length(Tree, node, chrg_station, weight='weight')
+        distances.append(path_distance)
+    return distances
 
 def get_distance(point1: (float, float), point2: (float, float)) -> float:
     """

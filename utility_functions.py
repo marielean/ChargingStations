@@ -337,12 +337,12 @@ def get_chrg_stations_with_neighbours(Tree: nx.Graph, charging_stations: set, L:
     
     return charging_stations
 
-def set_chrg_stations(Tree: nx.Graph, chrg_stations: list[str]) -> None:
+def set_chrg_stations(Tree: nx.Graph, chrg_stations: set) -> None:
     """
     Sets the charging stations in the graph
     :param
         Tree: Tree with nodes to be set as charging stations
-        chrg_stations: list of charging stations
+        chrg_stations: set of charging stations
     """
     chrg_stations =[str(element) for element in chrg_stations]
     for node in Tree.nodes():

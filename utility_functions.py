@@ -18,7 +18,7 @@ def get_weight_of_neighbours_edges(Tree: nx.Graph, node: str):
 
 def get_weight_of_nodes_edge_ordered(T: nx.Graph, flows: list, N: int, reverse: bool = True) -> any:
     '''
-    Returns the weights of the nodes and the edges ordered in a list
+    Returns the weights of the nodes and the edges ordered two a list
     :param
         T: Tree to be analyzed
         flows: list of flows
@@ -349,6 +349,20 @@ def set_chrg_stations(Tree: nx.Graph, chrg_stations: set) -> None:
         if node in chrg_stations:
             Tree.nodes[node]['chrg_station'] = True
 
+def disable_a_set_of_stations(Tree: nx.Graph, charging_stations: set):
+    '''
+    Disables a set of stations
+    param:
+        Tree: the tree network
+        charging_stations: the set of charging stations
+        flows: the list of flows
+    return:
+        disabled_charging_stations: the set of disabled charging stations
+    '''
+    Copy_tree = Tree.copy()
+    for node in charging_stations:
+        Copy_tree.nodes[node]['chrg_station'] = False
+
 def get_weight_of_edges(Tree : nx.Graph):
     """
     Returns a dictionary with the weight of the edges
@@ -438,6 +452,7 @@ def is_admissible(Tree: nx.Graph, flows: list, L: int, charging_stations: set) -
         Tree: Tree to be analyzed
         flows: list of flows
         L: battery capacity per vehicle
+        charging_stations: set of charging stations to verify
     :return
         True if the network is admissible, False otherwise
     """

@@ -337,6 +337,92 @@ def get_chrg_stations_with_neighbours(Tree: nx.Graph, charging_stations: set, L:
     
     return charging_stations
 
+def is_admissible_with_neighbours(Tree: nx.Graph, flows: list, L: int, charging_stations: set) -> bool:
+    '''
+    Function to check if the solution is admissible with neighbours
+    :param
+        Tree: Tree to be analyzed
+        flows: list of flows
+        L: battery capacity per vehicle
+        charging_stations: set of charging stations to verify
+    :return
+        True if the network is admissible, False otherwise
+    '''
+    paths = get_all_paths_of_all_flows(Tree, flows)
+    for path in paths:
+        if not check_admissibility_per_path_with_neighbours(Tree, path, L, charging_stations):
+            return False
+    return True
+
+def check_admissibility_per_path_with_neighbours(Tree: nx.Graph, path: list, L: int, charging_stations: set) -> bool:
+    '''
+    Check if the path of a flow is admissible with the neighbours
+    '''
+    charge = L
+    for i in range(len(path) - 1):
+        if path[i] in charging_stations:
+            charge = L
+        charge -= Tree.edges[(path[i], path[i+1])]['weight']
+        if charge < 0:
+            neighboring_nodes_with_edges = get_weight_of_neighbours_edges(Tree, path[i])
+
+            #se il nodo corrente ha almeno un vicino che non sia il nodo precedente e successivo del proprio cammino
+            if len(neighboring_nodes_with_edges) > 2:
+                
+                neighboring_nodes, weight_neighboring_edges = [list(elem) for elem in zip(*neighboring_nodes_with_edges)]
+                neighboring_nodes = [str(node) for node in neighboring_nodes]
+                
+                # ricavo l'indice per eliminare successivamente anche gli archi associati ai nodi precedente e successivo nel cammino
+                index = neighboring_nodes.index(str(path[i-1]))
+                index1 = neighboring_nodes.index(str(path[i+1]))
+
+                # rimuovo il nodo precedente e successivo del proprio cammino dal set dei vicini
+                neighboring_nodes.remove(path[i+1])
+                neighboring_nodes.remove(path[i-1])
+                
+                # rimuovo gli archi associati ai nodi eliminati
+                element = weight_neighboring_edges[index]
+                element1 = weight_neighboring_edges[index1]
+                weight_neighboring_edges.remove(element)
+                weight_neighboring_edges.remove(element1)
+
+                # se è presente una stazione di ricarica nei vicini, allora la raggiungo e poi torno indietro per continuare con il cammino del flusso
+                for node, edge_weight in zip(neighboring_nodes, weight_neighboring_edges):
+                    if node in charging_stations and charge - edge_weight >= 0:
+                        charge = L
+                        charge -= Tree.edges[(path[i], node)]['weight']
+                        break
+            else:
+                return False
+    return True
+
+def is_admissible(Tree: nx.Graph, flows: list, L: int, charging_stations: set) -> bool:
+    """
+    Function to check if the solution is admissible
+    :param
+        Tree: Tree to be analyzed
+        flows: list of flows
+        L: battery capacity per vehicle
+        charging_stations: set of charging stations to verify
+    :return
+        True if the network is admissible, False otherwise
+    """
+    paths = get_all_paths_of_all_flows(Tree, flows)
+    for path in paths:
+        if not check_admissibility_per_path(Tree, path, L, charging_stations):
+            return False
+    return True
+
+def check_admissibility_per_path(Tree: nx.Graph, path: list, L: int, charging_stations: set) -> bool:
+    charge = L
+    for i in range(len(path) - 1):
+        if path[i] in charging_stations:
+            charge = L
+        charge -= Tree.edges[(path[i], path[i+1])]['weight']
+        if charge < 0:
+            return False
+    return True
+
 def set_chrg_stations(Tree: nx.Graph, chrg_stations: set) -> None:
     """
     Sets the charging stations in the graph
@@ -434,33 +520,6 @@ def set_on_tree_random_chrg_stations(Tree: nx.Graph) -> list:
             chrg_stations.append(node)
             Tree.nodes[node]['chrg_station'] = True
     return chrg_stations
-
-def check_admissibility_per_path(Tree: nx.Graph, path: list, L: int, charging_stations: set) -> bool:
-    charge = L
-    for i in range(len(path) - 1):
-        if path[i] in charging_stations:
-            charge = L
-        charge -= Tree.edges[(path[i], path[i+1])]['weight']
-        if charge < 0:
-            return False
-    return True
-  
-def is_admissible(Tree: nx.Graph, flows: list, L: int, charging_stations: set) -> bool:
-    """
-    Function to check if the solution is admissible
-    :param
-        Tree: Tree to be analyzed
-        flows: list of flows
-        L: battery capacity per vehicle
-        charging_stations: set of charging stations to verify
-    :return
-        True if the network is admissible, False otherwise
-    """
-    paths = get_all_paths_of_all_flows(Tree, flows)
-    for path in paths:
-        if not check_admissibility_per_path(Tree, path, L, charging_stations):
-            return False
-    return True
 
 def get_distances_from_chrg_stations(Tree: nx.Graph, node: str, charging_stations: set) -> list:
     '''

@@ -1,6 +1,5 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-from scipy import spatial
 import random, json
 import numpy as np
 
@@ -530,17 +529,6 @@ def get_distances_from_chrg_stations(Tree: nx.Graph, node: str, charging_station
         path_distance = nx.shortest_path_length(Tree, node, chrg_station, weight='weight')
         distances.append(path_distance)
     return distances
-
-def get_distance(point1: (float, float), point2: (float, float)) -> float:
-    """
-    Function to get the distance between two points
-    :param
-        point1: first point
-        point2: second point
-    :return
-        distance between the two points
-    """
-    return spatial.distance.euclidean(point1, point2)
 
 def get_weights_matrix(T: nx.Graph, flows: list) -> (np.ndarray):
     '''
